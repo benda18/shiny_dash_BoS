@@ -2,6 +2,7 @@ library(dplyr)
 library(shiny)
 library(openxlsx)
 library(readr)
+library(glue)
 
 rm(list=ls());cat('\f');gc()
 
@@ -11,7 +12,10 @@ current.dash <- "https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBa
 # funs----
 
 # vars----
-the.wd <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
+the.wd   <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
+supp.wd  <- "C:/Users/TimBender/North Carolina Coalition to End Homelessness/PM Data Center - Documents/Reporting/Reporting  Custom/BoS Tableau Dashboard/Supplemental"
+lb.wd    <- NA
+csv.wd   <- NA
 
 # setup----
 setwd(the.wd)
