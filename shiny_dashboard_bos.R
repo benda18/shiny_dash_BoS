@@ -8,6 +8,7 @@ rm(list=ls());cat('\f');gc()
 
 # background----
 current.dash <- "https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS"
+ica.manual   <- "https://ncceh.sharepoint.com/sites/boscoccoordination/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2Fboscoccoordination%2FShared%20Documents%2F4%2D%20BoS%20Developing%20CoC%20System%2FFunding%20and%20Performance%20Subcommittee%2FBoS%20Dashboard%2FReport%20Guide%5FNCCEH%204%2E1%2E2%20%2D%20final%2Epdf&viewid=a0057c5d%2D63a9%2D4dd2%2D839c%2D60e509a88d59&parent=%2Fsites%2Fboscoccoordination%2FShared%20Documents%2F4%2D%20BoS%20Developing%20CoC%20System%2FFunding%20and%20Performance%20Subcommittee%2FBoS%20Dashboard"
 
 # funs----
 
@@ -19,6 +20,18 @@ csv.wd   <- NA
 
 # setup----
 setwd(the.wd)
+
+# data download requirements (LookBack)----
+# see ica.manual (var, above)
+
+# data download requirements (main)----
+# a. Name: User preference; not referenced by report.
+# b. Description: User preference; not required or referenced by report. 
+# c. Type: NCCEH_Custom_HUD_CSV_Payload
+# d. Provider Type: Reporting Group
+# e. Reporting Group: BoS CoC Dashboard Reporting Group (2283)
+# f. Start Date: 10/01/2020
+# g. End Date: Last day of most recently completed month (or user preference)
 
 # load data----
 data_scaffold    <- read.xlsx(NA)
