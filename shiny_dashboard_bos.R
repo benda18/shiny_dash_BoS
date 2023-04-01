@@ -17,9 +17,20 @@ the.wd <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
 setwd(the.wd)
 
 # load data----
-data_scaffold <- read.xlsx(NA)
-geocode_co_cw <- read.xlsx(NA)
-co_reg_cw     <- read.xlsx(NA)
+data_scaffold    <- read.xlsx(NA)
+geocode_co_cw    <- read.xlsx(NA)
+co_reg_cw        <- read.xlsx(NA)
+client           <- read_csv(NA)
+enrollmentcoc    <- read_csv(NA)
+enrollment       <- read_csv(NA)
+projectcoc       <- read_csv(NA)
+project          <- read_csv(NA)
+inventory        <- read_csv(NA)
+export           <- read_csv(NA)
+LB_enrollmentcoc <- read_csv(NA)
+LB_enrollment    <- read_csv(NA)
+LB_projectcoc    <- read_csv(NA)
+LB_project       <- read_csv(NA)
 
 # tidy----
 
