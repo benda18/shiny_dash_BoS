@@ -13,3 +13,13 @@ the.wd <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
 
 # setup----
 setwd(the.wd)
+
+# load data----
+
+# tidy----
+
+# analysis / modeling----
+
+# build shiny dash----
+
+# deploy----
