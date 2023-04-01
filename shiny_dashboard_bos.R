@@ -21,5 +21,26 @@ setwd(the.wd)
 # analysis / modeling----
 
 # build shiny dash----
+# TOP-LEVEL TABS
+# .... System summary, 
+# .... street outreach, 
+# .... emergency shelter & transitional housing, 
+# .... permanent housing projects
+# .... homelessness prevention
+# MAP LAYOUT FILTERS
+# .... County
+# GLOBAL DASHBOARD FILTERS
+# .... start_date <--> end_date, 
+# .... chronicity, 
+# .... veteran_status, 
+# .... count_level (individual vs. HoH)
+# DEMOGRAPHIC FILTER
+# .... overall, 
+# .... race, 
+# .... ethnicity, 
+# .... gender
+# TIMELINE CHART FILTERS
+# ....(varies by previous filter settings)
+
 
 # deploy----
