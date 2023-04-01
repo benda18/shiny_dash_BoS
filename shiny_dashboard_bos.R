@@ -1,5 +1,7 @@
 library(dplyr)
 library(shiny)
+library(openxlsx)
+library(readr)
 
 rm(list=ls());cat('\f');gc()
 
@@ -15,6 +17,9 @@ the.wd <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
 setwd(the.wd)
 
 # load data----
+data_scaffold <- read.xlsx(NA)
+geocode_co_cw <- read.xlsx(NA)
+co_reg_cw     <- read.xlsx(NA)
 
 # tidy----
 
