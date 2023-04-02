@@ -6,6 +6,15 @@ gen_error_code <- function(){
   as.character(openssl::md5(as.character(sample(0:10324232432,size=1))))
 }
 
+# data download requirements (main)----
+# a. Name: User preference; not referenced by report.
+# b. Description: User preference; not required or referenced by report.
+# c. Type: NCCEH_Custom_HUD_CSV_Payload
+# d. Provider Type: Reporting Group
+# e. Reporting Group: BoS CoC Dashboard Reporting Group (2283)
+# f. Start Date: 10/01/2020
+# g. End Date: Last day of most recently completed month (or user preference)
+
 # RESOURCES----
 # crosswalks: https://github.com/timbender-ncceh/PIT_HIC/tree/main/crosswalks
 # common HMIS functions: https://github.com/timbender-ncceh/PIT_HIC/blob/main/working_files/pit_survey_calculations.R
