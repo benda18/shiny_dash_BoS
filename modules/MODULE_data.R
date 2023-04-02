@@ -1,6 +1,10 @@
 library(dplyr)
 library(readr)
 
+gen_error_code <- function(){
+  as.character(openssl::md5(as.character(sample(0:10324232432,size=1))))
+}
+
 # RESOURCES----
 # crosswalks: https://github.com/timbender-ncceh/PIT_HIC/tree/main/crosswalks
 # common HMIS functions: https://github.com/timbender-ncceh/PIT_HIC/blob/main/working_files/pit_survey_calculations.R
@@ -96,6 +100,27 @@ hoh_race.eth.gender <- client[,c("PersonalID",
                                  "Questioning", 
                                  "Transgender", 
                                  "GenderNone")]
+
+hoh_race.eth.gender$calc_race      <- NA
+hoh_race.eth.gender$calc_ethnicity <- NA
+hoh_race.eth.gender$calc_gender    <- NA
+
+for(i in 1:nrow(hoh_race.eth.gender)){
+  temp <- fun_race(racenone = hoh_race.eth.gender$RaceNone[i], 
+                                               amindaknative = hoh_race.eth.gender$AmIndAKNative[i], 
+                                               asian = hoh_race.eth.gender$Asian[i], 
+                                               blackafamerican = hoh_race.eth.gender$BlackAfAmerican[i], 
+                                               nativehipacific = hoh_race.eth.gender$NativeHIPacific[i], 
+                                               white = hoh_race.eth.gender$White[i])
+  if(length(temp) == 0){
+    temp <- "<error code 9d415a763277029bcf1b3b542634a186>"
+  }
+  
+  hoh_race.eth.gender$calc_race[i] <- temp
+  
+  rm(temp)
+}
+
 fun_race()
 fun_ethnicity_def()
 fun_gender()
