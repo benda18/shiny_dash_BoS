@@ -1,11 +1,13 @@
 # PLANNING_data_output
 
-library(dplry)
+library(dplyr)
 library(ggplot2)
 library(lubridate)
 library(glue)
 library(crayon)
 library(readr)
+library(ggplot2)
+library(data.table)
 
 rm(list=ls());cat('\f');gc()
 
@@ -39,3 +41,25 @@ tab_es.th       <- list(TAB_name = "Emergency Shelter & Transitional Housing")
 tab_php         <- list(TAB_name = "Permanent Housing Projects") 
 
 tab_hp          <- list(TAB_name = "Homelessness Prevention") 
+
+
+# example chart
+data(lakers, package = "lubridate")
+lakers$date <- ymd(lakers$date)
+
+ex.chart_area <- lakers %>%
+  group_by(date, opponent,
+           game_type, 
+           team_LAL = team == "LAL") %>%
+  summarise(t_points = sum(points)) %>%
+  ungroup() %>%
+  mutate(., 
+         team_LAL = ifelse(team_LAL, "LAL", "opp")) 
+
+ggplot() + 
+  geom_area(data = ex.chart_area, 
+            #position = "fill",
+            aes(x = date, y = t_points, 
+                fill = team_LAL))+
+  labs(title = "LA Lakers Games Scores", 
+       subtitle = "Purpose: To Show how an Area Chart is Built")
