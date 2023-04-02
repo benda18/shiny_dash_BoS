@@ -16,15 +16,15 @@ NC Balance of State CoC HMIS Dashboard
 ### Using Tabs ###
 * https://shiny.rstudio.com/gallery/tabsets.html
 * https://shiny.rstudio.com/gallery/navbar-example.html
-### Using Sliders ### 
-* https://shiny.rstudio.com/gallery/sliders.html
+
 ### Checkbox / Select Box / Radio Buttions ###
-* Single checkbox:
-* Single select box: 
-* Single radio button:
-* Multiple checkbox: 
+* Single checkbox: https://gallery.shinyapps.io/070-widget-checkbox/
+* Single select box: https://gallery.shinyapps.io/076-widget-select/
+* Single radio button: https://gallery.shinyapps.io/075-widget-radio/
+* Multiple checkbox: https://gallery.shinyapps.io/069-widget-check-group/
 ### Date Range ###
-* 
+* https://gallery.shinyapps.io/072-widget-date-range/
 ### Sliders ###
-* Slider single value: 
-* Slider range:  
+* Slider single value: https://gallery.shinyapps.io/077-widget-slider/
+* Slider range: https://gallery.shinyapps.io/077-widget-slider/
+* Gallery of slider examples: https://shiny.rstudio.com/gallery/sliders.html  
