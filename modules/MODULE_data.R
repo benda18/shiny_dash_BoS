@@ -186,6 +186,7 @@ summary_hh <- about_hhids %>%
 
 # randomly select households for dataset----
 
+set.seed(seed = lubridate::mdy("4-2-2023"))
 selected.hhids <- about_hhids %>% 
   # filters----
 .[!is.na(.$HoH.calc_ethnicity) & 
@@ -208,9 +209,14 @@ selected.hhids <- about_hhids %>%
 # remove joined data and other data not needed
 rm(hoh_race.eth.gender)
 
+# OUTPUT DATASET----
+test.data <- enrollment[enrollment$HouseholdID %in% selected.hhids,]
+
+
 # END OF SCRIPT----
 # Return WD to wd prior to script being run----
 setwd(init.wd)
 
 # remove vars as needed
 rm(init.vars, init.wd)
+rm(list = common.hmis.funs)
