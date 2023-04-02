@@ -141,11 +141,19 @@ for(i in 1:nrow(hoh_race.eth.gender)){
   rm(temp)
 }
 
+hoh_race.eth.gender <- hoh_race.eth.gender[,c("PersonalID", 
+                                              "calc_race", "calc_ethnicity", 
+                                              "calc_gender")]
 
-
-# END OF SCRIPT----
-# Return WD to wd prior to script being run----
-setwd(init.wd)
-
-# remove vars as needed
-rm(init.vars, init.wd)
+client <- full_join(x = client, 
+          y = hoh_race.eth.gender) %>%
+  mutate(., 
+         calc_age = unlist(lapply(X = DOB, FUN = calc_age, 
+                                  age_on_date = Sys.Date())),
+         calc_hud_age_cat = unlist(lapply(X = calc_age, 
+                                          FUN = hud_age_category))) %>%
+  .[colnames(.) %in% c("PersonalID", 
+                       "VeteranStatus", "DateCreated", "DateUpdated", "DateDeleted", 
+                       "ExportID", 
+                       "calc_race", "calc_ethnicity", "calc_gender", 
+                       "calc_age", "calc_hud_age_cat")]
