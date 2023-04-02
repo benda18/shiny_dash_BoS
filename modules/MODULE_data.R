@@ -61,6 +61,7 @@ projectcoc       <- read_csv("ProjectCoC.csv")
 project          <- read_csv("Project.csv")
 inventory        <- read_csv("Inventory.csv")
 export           <- read_csv("Export.csv")
+exit             <- read_csv("Exit.csv")
 
 # load lookback csv----
 setwd(wd_lb)
@@ -182,6 +183,20 @@ summary_hh <- about_hhids %>%
            hoh_age_cat = HoH.calc_hud_age_cat, 
            hoh_vet     = HoH.calc_vet_status) %>%
   summarise(n_hhid = n_distinct(HouseholdID))
+
+# randomly select households for dataset----
+
+about_hhids %>% 
+  # filters----
+.[!is.na(.$HoH.calc_ethnicity) & 
+    !is.na(.$HoH.calc_hud_age_cat) & 
+    !is.na(.$HoH.calc_race),]
+
+  group_by()
+slice_sample(., 
+             n = 1)
+
+
 
 # remove joined data and other data not needed
 rm(hoh_race.eth.gender)
