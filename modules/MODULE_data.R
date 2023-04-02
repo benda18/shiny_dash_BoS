@@ -160,8 +160,19 @@ client <- full_join(x = client,
         "calc_vet_status")]
 
 # update about_hhids
-about_hhids
-client
+about_hhids <- left_join(about_hhids, 
+                         client[,c("PersonalID", "calc_race", "calc_ethnicity", "calc_gender", 
+                                   "calc_age", "calc_hud_age_cat", "calc_vet_status")], 
+                         by = c("HoH_PersonalID" = "PersonalID"))
+
+colnames(about_hhids)[grepl(pattern = "^calc_", 
+                            x = colnames(about_hhids), 
+                            ignore.case = F)] <- paste("HoH", 
+                                                       colnames(about_hhids)[grepl(pattern = "^calc_", 
+                                                                                   x = colnames(about_hhids), 
+                                                                                   ignore.case = F)], 
+                                                       sep = ".")
+
 # remove joined data and other data not needed
 rm(hoh_race.eth.gender)
 
