@@ -186,17 +186,24 @@ summary_hh <- about_hhids %>%
 
 # randomly select households for dataset----
 
-about_hhids %>% 
+selected.hhids <- about_hhids %>% 
   # filters----
 .[!is.na(.$HoH.calc_ethnicity) & 
     !is.na(.$HoH.calc_hud_age_cat) & 
-    !is.na(.$HoH.calc_race),]
-
-  group_by()
-slice_sample(., 
-             n = 1)
-
-
+    !is.na(.$HoH.calc_race) & 
+    !is.na(.$HoH.calc_gender) & 
+    !is.na(.$HoH.calc_vet_status),] %>%
+  group_by(hh_size, 
+           HoH.calc_race, 
+           HoH.calc_ethnicity, 
+           HoH.calc_gender, 
+           HoH.calc_hud_age_cat, 
+           HoH.calc_vet_status) %>%
+  #summarise(n = n())
+  slice_sample(., 
+             n = 7, replace = T) %>%
+  .[!duplicated(.),] %>%
+  .$HouseholdID %>% unique()
 
 # remove joined data and other data not needed
 rm(hoh_race.eth.gender)
