@@ -13,13 +13,13 @@ ica.manual   <- "https://ncceh.sharepoint.com/sites/boscoccoordination/Shared%20
 # funs----
 
 # vars----
-the.wd   <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
-supp.wd  <- "C:/Users/TimBender/North Carolina Coalition to End Homelessness/PM Data Center - Documents/Reporting/Reporting  Custom/BoS Tableau Dashboard/Supplemental"
-lb.wd    <- NA
-csv.wd   <- NA
+wd_PROJ   <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
+wd_supp  <- "C:/Users/TimBender/North Carolina Coalition to End Homelessness/PM Data Center - Documents/Reporting/Reporting  Custom/BoS Tableau Dashboard/Supplemental"
+wd_lb    <- NA
+wd_csv   <- NA
 
 # setup----
-setwd(the.wd)
+setwd(wd_PROJ)
 
 # data download requirements (LookBack)----
 # see ica.manual (var, above)
