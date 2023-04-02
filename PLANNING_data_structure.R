@@ -32,14 +32,10 @@ tab_sys.summary <- list(TAB_name                   = "System Summary",
                         CHART.y_axis               = c("see FILTERchart.flow_measure"), 
                         CHART.type                 = c("Area")) 
 
-tab_so          <- data.frame(tab_name = "Street Outreach") %>% 
-  as_tibble()
+tab_so          <- list(TAB_name = "Street Outreach") 
 
-tab_es.th       <- data.frame(tab_name = "Emergency Shelter & Transitional Housing") %>% 
-  as_tibble()
+tab_es.th       <- list(TAB_name = "Emergency Shelter & Transitional Housing") 
 
-tab_php         <- data.frame(tab_name = "Permanent Housing Projects") %>% 
-  as_tibble()
+tab_php         <- list(TAB_name = "Permanent Housing Projects") 
 
-tab_hp          <- data.frame(tab_name = "Homelessness Prevention") %>% 
-  as_tibble()
+tab_hp          <- list(TAB_name = "Homelessness Prevention") 
