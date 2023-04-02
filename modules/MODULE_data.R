@@ -106,24 +106,42 @@ hoh_race.eth.gender$calc_ethnicity <- NA
 hoh_race.eth.gender$calc_gender    <- NA
 
 for(i in 1:nrow(hoh_race.eth.gender)){
+  # race
   temp <- fun_race(racenone = hoh_race.eth.gender$RaceNone[i], 
-                                               amindaknative = hoh_race.eth.gender$AmIndAKNative[i], 
-                                               asian = hoh_race.eth.gender$Asian[i], 
-                                               blackafamerican = hoh_race.eth.gender$BlackAfAmerican[i], 
-                                               nativehipacific = hoh_race.eth.gender$NativeHIPacific[i], 
-                                               white = hoh_race.eth.gender$White[i])
+                   amindaknative = hoh_race.eth.gender$AmIndAKNative[i], 
+                   asian = hoh_race.eth.gender$Asian[i], 
+                   blackafamerican = hoh_race.eth.gender$BlackAfAmerican[i], 
+                   nativehipacific = hoh_race.eth.gender$NativeHIPacific[i], 
+                   white = hoh_race.eth.gender$White[i])
   if(length(temp) == 0){
     temp <- "<error code 9d415a763277029bcf1b3b542634a186>"
   }
-  
   hoh_race.eth.gender$calc_race[i] <- temp
+  rm(temp)
   
+  # ethnicity
+  temp <- fun_ethnicity_def(hoh_race.eth.gender$Ethnicity[i])
+  if(length(temp) == 0){
+    temp <- "<error code 2d33bb9a6fb916ecaca0cc974285952d>"
+  }
+  hoh_race.eth.gender$calc_ethnicity[i] <- temp
+  rm(temp)
+  
+  # gender
+  temp <- fun_gender(male        = hoh_race.eth.gender$Male[i], 
+                     female      = hoh_race.eth.gender$Female[i], 
+                     nosingle    = hoh_race.eth.gender$NoSingleGender[i], 
+                     questioning = hoh_race.eth.gender$Questioning[i], 
+                     trans       = hoh_race.eth.gender$Transgender[i], 
+                     gendernone  = hoh_race.eth.gender$GenderNone[i])
+  if(length(temp) == 0){
+    temp <- "<error code d7e446d03d24ca8c3c09e2e5f09e457e>"
+  }
+  hoh_race.eth.gender$calc_gender[i] <- temp
   rm(temp)
 }
 
-fun_race()
-fun_ethnicity_def()
-fun_gender()
+
 
 # END OF SCRIPT----
 # Return WD to wd prior to script being run----
