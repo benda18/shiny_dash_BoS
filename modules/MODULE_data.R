@@ -145,15 +145,12 @@ hoh_race.eth.gender <- hoh_race.eth.gender[,c("PersonalID",
                                               "calc_race", "calc_ethnicity", 
                                               "calc_gender")]
 
-client <- full_join(x     = client, 
-                    y     = hoh_race.eth.gender) %>%
+client <- full_join(x = client, 
+                    y = hoh_race.eth.gender) %>%
   mutate(., 
-         calc_age         = unlist(lapply(X = DOB, FUN = calc_age, 
-                                          age_on_date = Sys.Date())),
-         calc_hud_age_cat = unlist(lapply(X = calc_age, 
-                                          FUN = hud_age_category)), 
-         calc_vet_status  = unlist(lapply(X = VeteranStatus, 
-                                          FUN = fun_1.8_def))) %>%
+         calc_age         = unlist(lapply(X = DOB, FUN = calc_age, age_on_date = Sys.Date())),
+         calc_hud_age_cat = unlist(lapply(X = calc_age, FUN = hud_age_category)), 
+         calc_vet_status  = unlist(lapply(X = VeteranStatus, FUN = fun_1.8_def))) %>%
   .[colnames(.) %in% 
       c("PersonalID", 
         "VeteranStatus", "DateCreated", "DateUpdated", "DateDeleted", 
