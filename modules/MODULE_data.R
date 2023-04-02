@@ -219,3 +219,17 @@ test.data <- enrollment[enrollment$HouseholdID %in% selected.hhids,
   left_join(., client) %>%
   left_join(., exit[,c("ExitID", "EnrollmentID", "PersonalID", 
                        "ExportID", "ExitDate")])
+
+test.data <- left_join(test.data, 
+                       co_reg_cw[,c("Coc/Region", "County")], 
+                       by = c("NCCounty" = "County"))
+
+
+
+# END OF SCRIPT----
+# Return WD to wd prior to script being run----
+setwd(init.wd)
+
+# remove vars as needed
+rm(init.vars, init.wd)
+rm(list = common.hmis.funs)
