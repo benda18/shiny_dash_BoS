@@ -165,7 +165,10 @@ client <- full_join(x = client,
 about_hhids <- left_join(about_hhids, 
                          client[,c("PersonalID", "calc_race", "calc_ethnicity", "calc_gender", 
                                    "calc_age", "calc_hud_age_cat", "calc_vet_status")], 
-                         by = c("HoH_PersonalID" = "PersonalID"))
+                         by = c("HoH_PersonalID" = "PersonalID")) %>%
+  left_join(., 
+            enrollment[,c("EnrollmentID", "NCCounty")], 
+            by = c("HoH_EnrollmentID" = "EnrollmentID"))
 
 colnames(about_hhids)[grepl(pattern = "^calc_", 
                             x = colnames(about_hhids), 
@@ -212,18 +215,7 @@ rm(hoh_race.eth.gender)
 # OUTPUT DATASET----
 test.data <- enrollment[enrollment$HouseholdID %in% selected.hhids,
                         c(grep("ID$", colnames(enrollment), ignore.case = T, value = T), 
-                          "EntryDate")] %>%
+                          "EntryDate", "NCCounty")] %>%
   left_join(., client) %>%
   left_join(., exit[,c("ExitID", "EnrollmentID", "PersonalID", 
                        "ExportID", "ExitDate")])
-
-
-
-
-# END OF SCRIPT----
-# Return WD to wd prior to script being run----
-setwd(init.wd)
-
-# remove vars as needed
-rm(init.vars, init.wd)
-rm(list = common.hmis.funs)
