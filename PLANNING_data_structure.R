@@ -14,8 +14,23 @@ rm(list=ls());cat('\f');gc()
 
 # MASTER DATA STRUCTURE----
 
-tab_sys.summary <- data.frame(tab_name = "System Summary") %>% 
-  as_tibble()
+(tab_sys.summary <- list(TAB_name                = "System Summary",
+                         FILTERall.BoS_region       = NA, 
+                         FILTERall.County           = NA, 
+                         FILTERall.start_date       = NA, 
+                         FILTERall.end_date         = NA, 
+                         FILTERall.chronicity       = c("chronic", "not_chronic", "missing"), 
+                         FILTERall.vet_status       = c("veteran", "non-veteran", "missing"), 
+                         FILTERall.count_level      = c("Individuals", "Heads_of_Household"), 
+                         FILTERall.demographic_view = c("Overall", "Race", "Ethnicity", "Gender"), 
+                         TABLE.columns              = c("Active Homeless", "Inflow", "Outflow", 
+                                                        "PH Exits", "Move-Ins"), 
+                         TABLE.rows                 = c("unique values from FILTER.demographic_view"), 
+                         FILTERchart.flow_measure   = c("Active Homeless", "System Inflow/Outflow"),
+                         FILTERchart.select_breakout = c("Household Type", "Age Group", "Chronicity", "Veteran Status"),
+                         CHART.x_axis               = c("date"), 
+                         CHART.y_axis               = c("see FILTERchart.flow_measure"), 
+                         CHART.type                 = c("Area")) )
 
 tab_so          <- data.frame(tab_name = "Street Outreach") %>% 
   as_tibble()
@@ -113,3 +128,5 @@ bl_client_branch <- data.frame(branch_name = "project_inventory",
                                flow_stage  = c(NA), 
                                flow_desc   = c(NA)) %>% 
   as_tibble()
+
+
