@@ -16,6 +16,7 @@ rm(list=ls());cat('\f');gc()
 
 # MASTER DATA STRUCTURE----
 
+# Data Structure: System Summary----
 tab_sys.summary <- list(TAB_name                   = "System Summary",
                         FILTERall.BoS_region       = c("all 13 unique regions"), 
                         FILTERall.County           = c("all unique BoS counties"), 
@@ -34,16 +35,19 @@ tab_sys.summary <- list(TAB_name                   = "System Summary",
                         CHART.y_axis               = c("see FILTERchart.flow_measure"), 
                         CHART.type                 = c("Area")) 
 
+# Data Structure: Street Outreach----
 tab_so          <- list(TAB_name = "Street Outreach") 
 
+# Data Structure: Emergency Shelter & Transitional Housing----
 tab_es.th       <- list(TAB_name = "Emergency Shelter & Transitional Housing") 
 
+# Data Structure: Permanent Housing Projects----
 tab_php         <- list(TAB_name = "Permanent Housing Projects") 
 
 tab_hp          <- list(TAB_name = "Homelessness Prevention") 
 
 
-# example area chart----
+# EXAMPLE AREA CHART----
 data(lakers, package = "lubridate")
 lakers$date <- ymd(lakers$date)
 
