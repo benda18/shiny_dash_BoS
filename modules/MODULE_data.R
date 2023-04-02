@@ -73,11 +73,11 @@ LB_project       <- read_csv("Project.csv")
 # find a dozen households of various makeups
 all_hoh_hhid <- unique(enrollment$HouseholdID[enrollment$RelationshipToHoH == 1])
 
-about_hhids <- data.frame(HouseholdID = all_hoh_hhid) %>% as_tibble()
-
-about_hhids <- left_join(about_hhids, 
-                         enrollment[enrollment$RelationshipToHoH == 1,
-                                    c("HouseholdID", "PersonalID", "EnrollmentID")])
+about_hhids <- data.frame(HouseholdID = all_hoh_hhid) %>% 
+  as_tibble() %>%
+  left_join(.,
+            enrollment[enrollment$RelationshipToHoH == 1,
+                       c("HouseholdID", "PersonalID", "EnrollmentID")])
 colnames(about_hhids)[colnames(about_hhids) %in% "PersonalID"] <- "HoH_PersonalID"
 colnames(about_hhids)[colnames(about_hhids) %in% "EnrollmentID"] <- "HoH_EnrollmentID"
 
@@ -145,15 +145,34 @@ hoh_race.eth.gender <- hoh_race.eth.gender[,c("PersonalID",
                                               "calc_race", "calc_ethnicity", 
                                               "calc_gender")]
 
-client <- full_join(x = client, 
-          y = hoh_race.eth.gender) %>%
+client <- full_join(x     = client, 
+                    y     = hoh_race.eth.gender) %>%
   mutate(., 
-         calc_age = unlist(lapply(X = DOB, FUN = calc_age, 
-                                  age_on_date = Sys.Date())),
+         calc_age         = unlist(lapply(X = DOB, FUN = calc_age, 
+                                          age_on_date = Sys.Date())),
          calc_hud_age_cat = unlist(lapply(X = calc_age, 
-                                          FUN = hud_age_category))) %>%
-  .[colnames(.) %in% c("PersonalID", 
-                       "VeteranStatus", "DateCreated", "DateUpdated", "DateDeleted", 
-                       "ExportID", 
-                       "calc_race", "calc_ethnicity", "calc_gender", 
-                       "calc_age", "calc_hud_age_cat")]
+                                          FUN = hud_age_category)), 
+         calc_vet_status  = unlist(lapply(X = VeteranStatus, 
+                                          FUN = fun_1.8_def))) %>%
+  .[colnames(.) %in% 
+      c("PersonalID", 
+        "VeteranStatus", "DateCreated", "DateUpdated", "DateDeleted", 
+        "ExportID", 
+        "calc_race", "calc_ethnicity", "calc_gender", 
+        "calc_age", "calc_hud_age_cat", 
+        "calc_vet_status")]
+
+client$calc_vet_status %>% table()
+
+# update about_hhids
+about_hhids
+client
+# remove joined data and other data not needed
+rm(hoh_race.eth.gender)
+
+# END OF SCRIPT----
+# Return WD to wd prior to script being run----
+setwd(init.wd)
+
+# remove vars as needed
+rm(init.vars, init.wd)
