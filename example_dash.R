@@ -28,6 +28,11 @@ runExample("11_timer")      # an automated timer
 # demos----
 # https://shiny.rstudio.com/gallery/#demos
 
+# RFPs and other calls for projects for HMIS-Shiny Dashboards----
+# https://community.rstudio.com/t/coalition-on-homelessness-housing-in-ohio-homeless-management-information-system-hmis-data-analyst-consultant-shiny-package-development/119682
+
+# HMIS- related shiny projects----
+# https://www.hslynk.com/news/using-rstudio-with-hslynk-using-dplyr-implyr
 
 # Notes----
 
