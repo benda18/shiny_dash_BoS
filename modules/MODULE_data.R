@@ -1,5 +1,6 @@
 library(dplyr)
 library(readr)
+library(data.table)
 
 gen_error_code <- function(){
   as.character(openssl::md5(as.character(sample(0:10324232432,size=1))))
@@ -172,6 +173,15 @@ colnames(about_hhids)[grepl(pattern = "^calc_",
                                                                                    x = colnames(about_hhids), 
                                                                                    ignore.case = F)], 
                                                        sep = ".")
+
+summary_hh <- about_hhids %>%
+  group_by(hh_size, 
+           hoh_race = HoH.calc_race, 
+           hoh_ethnicity = HoH.calc_ethnicity, 
+           hoh_gender = HoH.calc_gender, 
+           hoh_age_cat = HoH.calc_hud_age_cat, 
+           hoh_vet     = HoH.calc_vet_status) %>%
+  summarise(n_hhid = n_distinct(HouseholdID))
 
 # remove joined data and other data not needed
 rm(hoh_race.eth.gender)
