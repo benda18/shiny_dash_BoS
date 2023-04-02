@@ -210,7 +210,14 @@ selected.hhids <- about_hhids %>%
 rm(hoh_race.eth.gender)
 
 # OUTPUT DATASET----
-test.data <- enrollment[enrollment$HouseholdID %in% selected.hhids,]
+test.data <- enrollment[enrollment$HouseholdID %in% selected.hhids,
+                        c(grep("ID$", colnames(enrollment), ignore.case = T, value = T), 
+                          "EntryDate")] %>%
+  left_join(., client) %>%
+  left_join(., exit[,c("ExitID", "EnrollmentID", "PersonalID", 
+                       "ExportID", "ExitDate")])
+
+
 
 
 # END OF SCRIPT----
