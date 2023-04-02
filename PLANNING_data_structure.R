@@ -43,7 +43,7 @@ tab_php         <- list(TAB_name = "Permanent Housing Projects")
 tab_hp          <- list(TAB_name = "Homelessness Prevention") 
 
 
-# example chart
+# example area chart----
 data(lakers, package = "lubridate")
 lakers$date <- ymd(lakers$date)
 
