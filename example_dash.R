@@ -3,8 +3,8 @@ library(shiny)
 
 setwd("C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash")
 
-#https://shiny.rstudio.com/tutorial/#get-started
 
+#https://shiny.rstudio.com/tutorial/#get-started
 # Built-in Examples (11)----
 runExample("01_hello")      # a histogram
 runExample("02_text")       # tables and data frames
@@ -18,6 +18,16 @@ runExample("09_upload")     # file upload wizard
 runExample("10_download")   # file download wizard
 runExample("11_timer")      # an automated timer
 
+# gallery----
+# https://shiny.rstudio.com/gallery/
+
+# https://shiny.rstudio.com/gallery/covid19-tracker.html
+# https://shiny.rstudio.com/gallery/superzip-example.html
+# 
+
+# demos----
+# https://shiny.rstudio.com/gallery/#demos
+
+
 # Notes----
 
-# tabs are in 06_tabsets
