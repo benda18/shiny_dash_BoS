@@ -36,9 +36,10 @@ rm(list=ls());cat('\f');gc()
 # Lookback CSV export adds relevant prior and future enrollment information to
 # each enrollment row.
 
-bl_main_branch <- data.frame(step_num   = 0:18, 
-                             flow_stage = c(NA), 
-                             flow_desc  = c(NA)) %>% 
+bl_main_branch <- data.frame(branch_name = "main", 
+                             step_num    = 0:18, 
+                             flow_stage  = c(NA), 
+                             flow_desc   = c(NA)) %>% 
   as_tibble()
 
 # Lookback Branch Logic----
@@ -52,7 +53,44 @@ bl_main_branch <- data.frame(step_num   = 0:18,
 # information for each client’s first enrollment in the Report export of the
 # Custom HUD CSV, should a prior enrollment exist
 
-bl_lookback_branch <- data.frame(step_num   = 0:11, 
-                                 flow_stage = c(NA), 
-                                 flow_desc  = c(NA)) %>% 
+bl_lookback_branch <- data.frame(branch_name = "lookback", 
+                                 step_num    = 0:11, 
+                                 flow_stage  = c(NA), 
+                                 flow_desc   = c(NA)) %>% 
+  as_tibble()
+
+# Client Branch Logic----
+
+# The Client Branch begins with the Client table from the NCCEH Custom HUD CSV
+# Report export, composed of deduplicated records for each client included in
+# the export, with each record containing demographic information that does not
+# change between enrollments. Operations performed within the branch mainly
+# serve to aggregate multiple race selections into single-value categories,
+# though disaggregated values are preserved through the Fact_MultiRace output
+# step
+
+bl_client_branch <- data.frame(branch_name = "client", 
+                               step_num    = 0:5, 
+                               flow_stage  = c(NA), 
+                               flow_desc   = c(NA)) %>% 
+  as_tibble()
+
+# Project + Inventory Branch Logic----
+
+# The Project branch’s main roles are to filter the Main branch for only NC-503
+# CoC-coded project enrollments and to provide project type information. This
+# intersection is detailed in the Main branch table. In the final report’s data
+# model, the output of this branch, Dim_Project, is used to filter dashboard
+# visualizations for specific project types.
+
+# The Inventory sub-branch relies on the Project branch to provide it with
+# geographic categorization. This categorization is required for effective
+# filtering of inventory-based measures; however, it is actually removed from
+# the Project branch to insulate the Project Type dimension from geographic
+# filtering.
+
+bl_client_branch <- data.frame(branch_name = "project_inventory", 
+                               step_num    = 0:8, 
+                               flow_stage  = c(NA), 
+                               flow_desc   = c(NA)) %>% 
   as_tibble()
