@@ -3,9 +3,25 @@ library(readr)
 
 # RESOURCES----
 # crosswalks: https://github.com/timbender-ncceh/PIT_HIC/tree/main/crosswalks
+# common HMIS functions: https://github.com/timbender-ncceh/PIT_HIC/blob/main/working_files/pit_survey_calculations.R
 
+# CAPTURE INITIAL STATE METADATA----
 # Write current wd so you can set it back to that once this script has run
 init.wd <- getwd()
+# Write current vars so you don't accidentally remove any
+init.vars <- c(ls(),"init.vars", "use.these")
+# load common HMIS functions----
+devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/PIT_HIC/dev/working_files/pit_survey_calculations.R?raw=TRUE")
+# get common hmis functions names
+common.hmis.funs <- ls()[!ls() %in% init.vars]
+
+
+# Vars----
+keep.these.common.funs <- c(NA)
+
+
+# Remove un-needed functions to save memory----
+gc()
 
 
 # LOAD DATA----
@@ -31,3 +47,6 @@ LB_project       <- read_csv("Project.csv")
 
 # Return WD to wd prior to script being run----
 setwd(init.wd)
+
+# remove vars as needed
+rm(init.vars, init.wd)
