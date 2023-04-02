@@ -20,9 +20,8 @@ devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/PI
 # get common hmis functions names
 common.hmis.funs <- ls()[!ls() %in% init.vars]
 
-
 # VARS----
-grep("ch", common.hmis.funs, ignore.case = T, value = T)
+grep("type", common.hmis.funs, ignore.case = T, value = T)
 
 keep.these.common.funs <- c("fun_gender", 
                             "fun_race",
@@ -31,7 +30,12 @@ keep.these.common.funs <- c("fun_gender",
                             "get.calc_location_county", 
                             "get.proj_county", 
                             "get.calc_region", 
-                            "get_coc_region")
+                            "get_coc_region", 
+                            "fun_rel2hoh", 
+                            "fun_1.8_def", 
+                            "fun_ethnicity_def", 
+                            "fun_livingsituation_def", 
+                            "fun_projtype")
 
 # Remove un-needed functions to save memory----
 rm.hmis.funs <- common.hmis.funs[!common.hmis.funs %in% keep.these.common.funs]
@@ -60,6 +64,43 @@ LB_enrollment    <- read_csv("Enrollment.csv")
 LB_projectcoc    <- read_csv("ProjectCoC.csv")
 LB_project       <- read_csv("Project.csv")
 
+# TEMP: BUILD SMALL DATASET----
+
+# find a dozen households of various makeups
+all_hoh_hhid <- unique(enrollment$HouseholdID[enrollment$RelationshipToHoH == 1])
+
+about_hhids <- data.frame(HouseholdID = all_hoh_hhid) %>% as_tibble()
+
+about_hhids <- left_join(about_hhids, 
+                         enrollment[enrollment$RelationshipToHoH == 1,
+                                    c("HouseholdID", "PersonalID", "EnrollmentID")])
+colnames(about_hhids)[colnames(about_hhids) %in% "PersonalID"] <- "HoH_PersonalID"
+colnames(about_hhids)[colnames(about_hhids) %in% "EnrollmentID"] <- "HoH_EnrollmentID"
+
+about_hhids <- left_join(about_hhids, 
+                         summarise(group_by(enrollment, HouseholdID),
+                                   hh_size = n_distinct(PersonalID)))
+
+# hoh race, ethnicity, gender----
+hoh_race.eth.gender <- client[,c("PersonalID",
+                                 "RaceNone", 
+                                 "AmIndAKNative",
+                                 "Asian",
+                                 "BlackAfAmerican", 
+                                 "NativeHIPacific", 
+                                 "White", 
+                                 "Ethnicity", 
+                                 "Male", 
+                                 "Female", 
+                                 "NoSingleGender", 
+                                 "Questioning", 
+                                 "Transgender", 
+                                 "GenderNone")]
+fun_race()
+fun_ethnicity_def()
+fun_gender()
+
+# END OF SCRIPT----
 # Return WD to wd prior to script being run----
 setwd(init.wd)
 
