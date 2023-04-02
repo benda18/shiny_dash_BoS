@@ -21,37 +21,8 @@ wd_csv   <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash/csv_data"
 # setup----
 setwd(wd_PROJ)
 
-# data download requirements (LookBack)----
-# see ica.manual (var, above)
-
-# data download requirements (main)----
-# a. Name: User preference; not referenced by report.
-# b. Description: User preference; not required or referenced by report. 
-# c. Type: NCCEH_Custom_HUD_CSV_Payload
-# d. Provider Type: Reporting Group
-# e. Reporting Group: BoS CoC Dashboard Reporting Group (2283)
-# f. Start Date: 10/01/2020
-# g. End Date: Last day of most recently completed month (or user preference)
-
-# load data----
-data_scaffold    <- read.xlsx(NA)
-geocode_co_cw    <- read.xlsx(NA)
-co_reg_cw        <- read.xlsx(NA)
-client           <- read_csv(NA)
-enrollmentcoc    <- read_csv(NA)
-enrollment       <- read_csv(NA)
-projectcoc       <- read_csv(NA)
-project          <- read_csv(NA)
-inventory        <- read_csv(NA)
-export           <- read_csv(NA)
-LB_enrollmentcoc <- read_csv(NA)
-LB_enrollment    <- read_csv(NA)
-LB_projectcoc    <- read_csv(NA)
-LB_project       <- read_csv(NA)
-
-# tidy----
-
-# analysis / modeling----
+# Pull Data from MODULE_data----
+devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_data.R?raw=TRUE")
 
 # build shiny dash----
 # TOP-LEVEL TABS
