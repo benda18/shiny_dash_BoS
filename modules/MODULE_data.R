@@ -162,8 +162,6 @@ client <- full_join(x     = client,
         "calc_age", "calc_hud_age_cat", 
         "calc_vet_status")]
 
-client$calc_vet_status %>% table()
-
 # update about_hhids
 about_hhids
 client
