@@ -43,23 +43,20 @@ setwd(wd_PROJ)
 
 # LOAD DATA----
 
-# Pull Data from MODULE_data
-if(!"test.data" %in% ls()){ # save time by not re-running this process if it's already loaded in memory
-  pre.ls <- ls()
-  devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_data.R?raw=TRUE")
-  # vars management
-  pulled.ls <- ls()
-  diff.ls   <- pulled.ls[!pulled.ls %in% pre.ls]
-  keep.ls   <- c("test.data")
-  drop.ls   <- diff.ls[!diff.ls %in% keep.ls]
-  # remove drop.ls
-  rm(list = drop.ls)
-  # gc
-  gc()
-}
-
-# Pull Data from MODULE_mapping
-devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_mapping.R?raw=TRUE")
+# # Pull Data from MODULE_data
+# if(!"test.data" %in% ls()){ # save time by not re-running this process if it's already loaded in memory
+#   pre.ls <- ls()
+#   devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_data.R?raw=TRUE")
+#   # vars management
+#   pulled.ls <- ls()
+#   diff.ls   <- pulled.ls[!pulled.ls %in% pre.ls]
+#   keep.ls   <- c("test.data")
+#   drop.ls   <- diff.ls[!diff.ls %in% keep.ls]
+#   # remove drop.ls
+#   rm(list = drop.ls)
+#   # gc
+#   gc()
+# }
 
 # pretend dataset
 
@@ -172,6 +169,7 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
 server <- function(input,  output, session) {
   # load data
   pretend.df <- read_csv("https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/proof_of_concept_app/summary_agegroups_by_region.csv")
+  devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_mapping.R?raw=TRUE")
   
   # other stuff
   output$basemap01 <- renderPlot({
