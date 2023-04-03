@@ -31,6 +31,15 @@ nc_counties <- left_join(nc_counties,
                          bos_cos_regions, 
                          by = c("NAME" = "County"))
 
+bos_regions <- nc_counties[!is.na(nc_counties$Region),] %>%
+  .[!.$Region %in% c("Durham CoC", "Orange CoC"),] %>%
+  group_by(Region) %>%
+  summarise()
+
+bos_regions$Region_f <- factor(bos_regions$Region, 
+                               levels = paste("Region", 1:13, sep = " "))
+
+
 # set limits of basemap to bbox extent of NC
 # manual adjustments to bbox
 x.adj <- 0.3
@@ -58,12 +67,18 @@ basemap <- ggplot() +
   geom_sf(data = adjacent_states, 
           fill = "white", 
           color = "grey")+
+  geom_sf(data = nc_bound,
+          color = "grey",
+          fill = "white") +
+  geom_sf(data = bos_regions, 
+          color = "white",
+          aes(fill = Region_f))+
   geom_sf(data = nc_bound, 
-          color = "grey") +
+          color = "black", 
+          fill = NA) +
   coord_sf(xlim = range(bbox.nc[c("xmin", "xmax")]), 
-           ylim = range(bbox.nc[c("ymin", "ymax")]))
-
-basemap 
+           ylim = range(bbox.nc[c("ymin", "ymax")]))+
+  scale_fill_discrete(name = "BoS Region")
 
 # # OLDER----
 # # Set Variables----
