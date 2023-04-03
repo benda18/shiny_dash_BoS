@@ -16,7 +16,6 @@ wd_csv   <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash/csv_data"
 setwd(wd_PROJ)
 
 # VARS----
-vars <- setdiff(names(iris), "Species") # same as c(names(iris)) except it removes "Species" (the last column)
 
 # LOAD DATA----
 
@@ -73,6 +72,9 @@ shinyApp(ui = ui, server = server)
 # OLDER----
 stop("older code; do not run")
 # Components----
+# Vars
+vars1 <- setdiff(names(iris), "Species") # same as c(names(iris)) except it removes "Species" (the last column)
+
 # ui-----
 ui2 <- pageWithSidebar(
   # header
@@ -82,11 +84,11 @@ ui2 <- pageWithSidebar(
     # selectors
     selectInput(inputId  = 'xcol',
                 label    = 'X Variable',
-                choices  = vars),
+                choices  = vars1),
     selectInput(inputId  = 'ycol',
                 label    = 'Y Variable',
-                choices  = vars,
-                selected = vars[[2]]),
+                choices  = vars1,
+                selected = vars1[[2]]),
     numericInput(inputId = 'clusters',
                  label   = 'Cluster count',
                  value   = 3,
