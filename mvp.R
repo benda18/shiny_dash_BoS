@@ -131,25 +131,25 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
                   # Select Regions by checkbox----
                   checkboxGroupInput(inputId = "checkGroup01", 
                                      label = h3("Select by Region"), # h3 is a markup / html tag for heading
-                                     choices = list("Region 1" = 1, 
-                                                    "Region 2" = 2, 
-                                                    "Region 3" = 3, 
-                                                    "Region 4" = 4, 
-                                                    "Region 5" = 5, 
-                                                    "Region 6" = 6, 
-                                                    "Region 7" = 7, 
-                                                    "Region 8" = 8, 
-                                                    "Region 9" = 9, 
-                                                    "Region 10" = 10, 
-                                                    "Region 11" = 11, 
-                                                    "Region 12" = 12, 
-                                                    "Region 13" = 13),
-                                     selected = c(1:13)),
+                                     choices = list("Region 1" = "Region 1", 
+                                                    "Region 2" = "Region 2", 
+                                                    "Region 3" = "Region 3", 
+                                                    "Region 4" = "Region 4", 
+                                                    "Region 5" = "Region 5", 
+                                                    "Region 6" = "Region 6", 
+                                                    "Region 7" = "Region 7", 
+                                                    "Region 8" = "Region 8", 
+                                                    "Region 9" = "Region 9", 
+                                                    "Region 10" = "Region 10", 
+                                                    "Region 11" = "Region 11", 
+                                                    "Region 12" = "Region 12", 
+                                                    "Region 13" = "Region 13"),
+                                     selected = paste("Region", 1:13, sep = " ")),
                   #hr(),  # this is an html tag <hr> for creating a thematic break in a page
                   # fluidRow(column(3, verbatimTextOutput("value01"))), # prints the results of the checkboxes
-                  ), 
-                  mainPanel(plotOutput(outputId = "basemap01"), 
-                            tableOutput(outputId = "table01"))))
+                ), 
+                mainPanel(plotOutput(outputId = "basemap01"), 
+                          tableOutput(outputId = "table01"))))
 
 # server----
 server <- function(input,  output, session) {
@@ -157,11 +157,13 @@ server <- function(input,  output, session) {
     basemap
   })
   output$table01 <- renderTable({
-    pretend.df
+    pretend.df[pretend.df$Region %in% input$checkGroup01,]
   })
   # You can access the values of the widget (as a vector)
   # with input$checkGroup01, e.g.
-  output$value01 <- renderPrint({ input$checkGroup01 })
+  output$value01 <- renderPrint({ 
+    input$checkGroup01 
+  })
 }
 
 # app----
