@@ -19,8 +19,18 @@ setwd(wd_PROJ)
 vars <- setdiff(names(iris), "Species") # same as c(names(iris)) except it removes "Species" (the last column)
 
 # LOAD DATA----
-pre.ls()
-
+pre.ls <- ls()
+# Pull Data from MODULE_data
+devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_data.R?raw=TRUE")
+# vars management
+pulled.ls <- ls()
+diff.ls   <- pulled.ls[!pulled.ls %in% pre.ls]
+keep.ls   <- "test.data"
+drop.ls   <- diff.ls[!diff.ls %in% keep.ls]
+# remove drop.ls
+rm(list = drop.ls)
+# gc
+gc()
 
 # UI-----
 ui <- pageWithSidebar(
