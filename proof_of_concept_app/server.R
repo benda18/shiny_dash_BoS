@@ -3,6 +3,9 @@ library(readr)
 library(shiny)
 library(data.table)
 library(ggplot2)
+library(tigris)
+library(tidycensus)
+library(glue)
 
 function(input, output) {
   # load data
