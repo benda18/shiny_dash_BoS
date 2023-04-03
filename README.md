@@ -3,6 +3,7 @@ NC Balance of State CoC HMIS Dashboard
 
 
 ## RESOURCES ##
+* The Bible: https://mastering-shiny.org/index.html
 * NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
 * RStudio Shiny homepage: https://shiny.rstudio.com/
 
