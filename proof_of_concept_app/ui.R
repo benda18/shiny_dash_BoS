@@ -3,6 +3,9 @@ library(readr)
 library(shiny)
 library(data.table)
 library(ggplot2)
+library(tigris)
+library(tidycensus)
+library(glue)
 
 fluidPage(titlePanel("Proof of Concept Shiny Dashboard - Tim Bender, NCCEH (April 2023)"),
           div(h4("Proof of Concept Shiny Dashboard Demonstrating the following:"),
