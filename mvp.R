@@ -127,7 +127,8 @@ sa.goals
 # ui----
 ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"), 
                 # Select Regions by checkbox----
-                checkboxGroupInput("checkGroup", label = h3("Select by Region"), 
+                checkboxGroupInput(inputId = "checkGroup01", 
+                                   label = h3("Select by Region"), # h3 is a markup / html tag for heading
                                    choices = list("Region 1" = 1, 
                                                   "Region 2" = 2, 
                                                   "Region 3" = 3, 
@@ -142,7 +143,7 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
                                                   "Region 12" = 12, 
                                                   "Region 13" = 13),
                                    selected = c(1:13)),
-                hr(),
+                #hr(),  # this is an html tag <hr> for creating a thematic break in a page
                 fluidRow(column(3, verbatimTextOutput("value01"))),
                 # sidebar----
                 sidebarLayout(sidebarPanel(
@@ -164,8 +165,8 @@ server <- function(input,  output, session) {
     pretend.df
   })
   # You can access the values of the widget (as a vector)
-  # with input$checkGroup, e.g.
-  output$value01 <- renderPrint({ input$checkGroup })
+  # with input$checkGroup01, e.g.
+  output$value01 <- renderPrint({ input$checkGroup01 })
 }
 
 # app----
