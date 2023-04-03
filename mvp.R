@@ -4,7 +4,7 @@ library(dplyr)
 library(readr)
 library(shiny)
 
-rm(list=ls());cat('\f');gc()
+rm(list=ls()[!ls() %in% "test.data"]);cat('\f');gc()
 
 # vars----
 wd_PROJ  <- "C:/Users/TimBender/Documents/R/ncceh/projects/shiny_dash"
@@ -34,7 +34,6 @@ if(!"test.data" %in% ls()){ # save time by not re-running this process if it's a
   gc()
 }
 
-
 # Pull Data from MODULE_mapping
 devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_mapping.R?raw=TRUE")
 
@@ -55,13 +54,24 @@ sa.goals
 
 # myMVP---
 # ui----
-ui <- pageWithSidebar(headerPanel  = headerPanel(title = "NC Balance of State CoC HMIS Dashboard"), 
-                      sidebarPanel = sidebarPanel(), 
-                      mainPanel    = mainPanel())
+# ui <- pageWithSidebar(headerPanel  = headerPanel(title = "NC Balance of State CoC HMIS Dashboard"), 
+#                       sidebarPanel = sidebarPanel(), 
+#                       mainPanel    = mainPanel())
+
+# alternate ui
+ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"), 
+                sidebarLayout(sidebarPanel(sliderInput(inputId = "someID", 
+                                                       label   = "some_label", 
+                                                       min     = 0, 
+                                                       max     = 2, 
+                                                       value   = 1 )), 
+                              mainPanel(plotOutput(outputId = "basemap01"))))
 
 # server----
 server <- function(input,  output, session) {
-  
+  output$basemap01 <- renderPlot({
+    basemap
+  })
 }
 
 # app----
