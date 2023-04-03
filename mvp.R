@@ -125,7 +125,18 @@ sa.goals
 
 # myMVP---
 # ui----
-ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"), 
+ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
+                div(h4("Proof of Concept Shiny Dashboard Demonstrating the following:"),
+                    ("* Ability to add [dummy] data table(s) to dashboard"),
+                    br("* Ability to add map(s) to dashboard"), 
+                    ("* Ability to interact with table(s) and map(s) through user inputs (checkbox)"), 
+                    br("* Hosted web deployment"),
+                    h4("Still needs to demonstrate the Following:"), 
+                    ("* tidy and clean data to meet dashboard's full needs"), 
+                    br("* implement date range slider as an interactive filter"), 
+                    ("* Aesthetic improvements (colors, sizes, locations, layouts, etc)"), 
+                    br("* Demonstrate working proof of complex multi-filter dashboard interactions (i.e. Race + Date + Region)"), 
+                    ("* all items/issues in smartsheet can be addressed")),
                 # sidebar----
                 sidebarLayout(sidebarPanel(
                   # Select Regions by checkbox----
@@ -154,7 +165,18 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
 # server----
 server <- function(input,  output, session) {
   output$basemap01 <- renderPlot({
-    basemap
+    basemap+
+      geom_sf(data = bos_regions[bos_regions$Region %in% input$checkGroup01,], # filter regions here 
+              color = "white",
+              aes(fill = Region_f))+
+      geom_sf(data = nc_bound, 
+              color = "grey", 
+              fill = NA) +
+      geom_sf(data = bos_counties[bos_counties$Region %in% input$checkGroup01,],  # filter regions here
+              fill = NA, color = "black") +
+      coord_sf(xlim = range(bbox.nc[c("xmin", "xmax")]), 
+               ylim = range(bbox.nc[c("ymin", "ymax")]))+
+      scale_fill_discrete(name = "BoS Region")
   })
   output$table01 <- renderTable({
     pretend.df[pretend.df$Region %in% input$checkGroup01,]
