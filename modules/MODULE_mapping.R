@@ -85,3 +85,6 @@ basemap <- ggplot() +
   # scale_fill_discrete(name = "BoS Region")
 
 # basemap
+
+# rm stuff----
+rm(var_year, x.adj, y.adj)
