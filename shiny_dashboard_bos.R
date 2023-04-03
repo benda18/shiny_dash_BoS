@@ -49,13 +49,31 @@ devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/sh
 
 # DEPLOY----
 
+# general desired layout: 
+
+gen.layout_2byN <- c("MAP", "FILTERS", 
+                     "MAP", "TABLE", 
+                     "title", "title", 
+                     "FILTER", "FILTER", 
+                     "CHART", "CHART") %>%
+  matrix(., ncol = 2, byrow = T) %>%
+  as.data.frame() %>%
+  mutate(row_num = 1:length(V1)) %>%
+  as.data.table() %>%
+  melt(., 
+       id.vars = c("row_num"), 
+       variable.name = "col_num") %>% 
+  as.data.frame() %>%
+  mutate(., 
+         col_num = as.numeric(gsub(pattern = "^V", "", col_num)))
+
+gen.layout_2byN
+gen.layout_ids <- data.frame(NA)
 
 # deploy_ui----
-db.ui <- fluidPage( # creates fluid layout page. see ?fluidPage for other options
-  # App title ----
-  titlePanel(title="<application_title>", 
-             windowTitle="<browser_window_title>"),
-  
+db.ui <- fluidPage(
+  titlePanel(title="NC Balance of State CoC HMIS Dashboard", 
+             windowTitle="NCCEH NC BoS HIMS Dashboard"),
   # Sidebar layout with input and output definitions ----
   sidebarLayout(
     # Sidebar panel for inputs ----
@@ -65,7 +83,19 @@ db.ui <- fluidPage( # creates fluid layout page. see ?fluidPage for other option
                   label = "Number of bins:",
                   min = 1,
                   max = 50,
-                  value = 30)),
+                  value = 30),
+      sliderInput(inputId = "foo", 
+                  label = "Number of Foos:", 
+                  min = 0, max = 10, value = 4),
+      checkboxGroupInput("checkGroup", 
+                         label = h3("Checkbox group"), 
+                         choices = list("Choice 1" = 1, 
+                                        "Choice 2" = 2, 
+                                        "Choice 3" = 3),
+                         selected = NULL),
+      hr(),
+      fluidRow(column(3, verbatimTextOutput("value")))
+      ), # /sidebarPanel
     
     # Main panel for displaying outputs ----
     mainPanel(
@@ -73,7 +103,7 @@ db.ui <- fluidPage( # creates fluid layout page. see ?fluidPage for other option
       plotOutput(outputId = "distPlot")
       
     )
-  )
+  ) # /sidebar layout
 )
 
 # deploy_server----
@@ -96,6 +126,11 @@ db.server <- function(input, output) {
          xlab = "Waiting time to next eruption (in mins)",
          main = "Histogram of waiting times")
   })
+  # checkbox output: 
+  # You can access the values of the widget (as a vector)
+  # with input$checkGroup, e.g.
+  output$value <- renderPrint({ input$checkGroup })
+  
 }
 
 # deploy_shiny.app----
