@@ -37,7 +37,7 @@ NC Balance of State CoC HMIS Dashboard
 * Basic table examples: https://shiny.rstudio.com/gallery/basic-datatable.html
 * Table Demos: https://shiny.rstudio.com/gallery/datatables-demo.html
 * Table Options: https://shiny.rstudio.com/gallery/datatables-options.html
-###### Plots ######
+##### Plots #####
 * Basic plot interaction: https://shiny.rstudio.com/gallery/plot-interaction-basic.html
 * Advanced plot interaction: https://shiny.rstudio.com/gallery/plot-interaction-advanced.html
 * Selecting points: https://shiny.rstudio.com/gallery/plot-interaction-selecting-points.html
