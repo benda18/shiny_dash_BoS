@@ -4,7 +4,7 @@ library(shiny)
 library(data.table)
 library(ggplot2)
 
-fluidPage(titlePanel("Proof of Concept Shiny Dashboard"),
+fluidPage(titlePanel("Proof of Concept Shiny Dashboard - Tim Bender, NCCEH (April 2023)"),
           div(h4("Proof of Concept Shiny Dashboard Demonstrating the following:"),
               ("* Ability to add [dummy] data table(s) to dashboard"),
               br("* Ability to add map(s) to dashboard"), 
