@@ -25,55 +25,82 @@ devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/sh
 # vars management
 pulled.ls <- ls()
 diff.ls   <- pulled.ls[!pulled.ls %in% pre.ls]
-keep.ls   <- "test.data"
+keep.ls   <- c("test.data")
 drop.ls   <- diff.ls[!diff.ls %in% keep.ls]
 # remove drop.ls
 rm(list = drop.ls)
 # gc
 gc()
 
-# UI-----
+# Pull Data from MODULE_mapping
+devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/modules/MODULE_mapping.R?raw=TRUE")
+
+
+# SHINY APP---
+# Goals----
+sa.goals <- list(step_1 = c("ggplot basemap", 
+                            "show a table", 
+                            "not interactive", 
+                            "not filterable"), 
+                 step_2 = c("table filters"), 
+                 step_3 = c("map-county selection"), 
+                 step_4 = c("sliders and other inputs things"),
+                 step_N = c("formatting map theme", 
+                            "formatting "))
+sa.goals
+
+
+# Components----
+# ui-----
 ui <- pageWithSidebar(
-  # header----
-  headerPanel  = headerPanel(title = 'Iris k-means clustering'),
-  # sidebar panel----
-  sidebarPanel = sidebarPanel(selectInput(inputId  = 'xcol', 
-                                          label    = 'X Variable', 
-                                          choices  = vars),
-                              selectInput(inputId  = 'ycol', 
-                                          label    = 'Y Variable',
-                                          choices  = vars, 
-                                          selected = vars[[2]]),
-                              numericInput(inputId = 'clusters', 
-                                           label   = 'Cluster count', 
-                                           value   = 3, 
-                                           min     = 1, 
-                                           max     = 9)),
-  # main panel----
-  mainPanel    = mainPanel(plotOutput('plot1')))# plotOutput is part of the shiny interactive plot
+  # header
+  headerPanel  = headerPanel(title = "<dashboard title>"),
+  # sidebar panel
+  sidebarPanel = sidebarPanel(
+    # selectors
+    selectInput(inputId  = 'xcol',
+                label    = 'X Variable',
+                choices  = vars),
+    selectInput(inputId  = 'ycol',
+                label    = 'Y Variable',
+                choices  = vars,
+                selected = vars[[2]]),
+    numericInput(inputId = 'clusters',
+                 label   = 'Cluster count',
+                 value   = 3,
+                 min     = 1,
+                 max     = 9)
+  ),
+  # main panel
+  mainPanel    = mainPanel(plotOutput(outputId = 'plot1')))# plotOutput is part of the shiny interactive plot
 
 
-# SERVER----
+# server----
 server <- function(input,  # input data (i.e. iris)
                    output, # output features (i.e. plot)
                    session) {
   
-  # Combine the selected variables into a new data frame
+  # Building the Dataset----
+  
+  # filter down base data (IRIS) based on inputs (xcol, ycol)
   selectedData <- reactive({
     iris[, c(input$xcol, input$ycol)]
   })
   
+  # perform kmeans() function on selectedData to return clusters
   clusters <- reactive({
-    kmeans(selectedData(), input$clusters)
+    kmeans(x       = selectedData(), 
+           centers = input$clusters)
   })
   
-  # plot colors
-  output$plot1 <- shiny::renderPlot(expr = {
+  # build plot----
+  output$plot1 <- shiny::renderPlot(expr = {  # note how 'plot1' is same as outputId in UI
+    # set color palette for clusters, up to maximum number of clusters (9)
     palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
               "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
     
     # par sets or queries graphical parameters
-    par(mar = c(5.1, 4.1, 0, 1))
+    par(mar = c(5.1, 4.1, 0, 1)) # mar sets margins for plot
     # plot... plots
     plot(selectedData(),
          col = clusters()$cluster,
@@ -84,5 +111,5 @@ server <- function(input,  # input data (i.e. iris)
   
 }
 
-# APP----
+# app----
 shiny::shinyApp(ui = ui, server = server)
