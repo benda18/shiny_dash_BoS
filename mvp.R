@@ -38,13 +38,14 @@ devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/sh
 
 # SHINY APP---
 # Goals----
-sa.goals <- list(step_1 = c("ggplot basemap", 
+sa.goals <- list(step_1 = c("hello world example"), 
+                 step_2 = c("ggplot basemap", 
                             "show a table", 
                             "not interactive", 
                             "not filterable"), 
-                 step_2 = c("table filters"), 
-                 step_3 = c("map-county selection"), 
-                 step_4 = c("sliders and other inputs things"),
+                 step_3 = c("table filters"), 
+                 step_4 = c("map-county selection"), 
+                 step_5 = c("sliders and other inputs things"),
                  step_N = c("formatting map theme", 
                             "formatting "))
 sa.goals
@@ -69,7 +70,7 @@ shinyApp(ui = ui, server = server)
 stop("older code; do not run")
 # Components----
 # ui-----
-ui <- pageWithSidebar(
+ui2 <- pageWithSidebar(
   # header
   headerPanel  = headerPanel(title = "<dashboard title>"),
   # sidebar panel
@@ -93,7 +94,7 @@ ui <- pageWithSidebar(
 
 
 # server----
-server <- function(input,  # input data (i.e. iris)
+server2 <- function(input,  # input data (i.e. iris)
                    output, # output features (i.e. plot)
                    session) {
 
@@ -129,4 +130,4 @@ server <- function(input,  # input data (i.e. iris)
 }
 
 # app----
-shiny::shinyApp(ui = ui, server = server)
+#shiny::shinyApp(ui = ui, server = server)
