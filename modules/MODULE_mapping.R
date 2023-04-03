@@ -6,8 +6,6 @@ library(tidycensus)
 library(dplyr)
 library(glue)
 
-#rm(list = ls());gc();cat('\f')  
-
 # Vars----
 var_year <- 2021
 
