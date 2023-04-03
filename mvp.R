@@ -54,11 +54,6 @@ sa.goals
 
 # myMVP---
 # ui----
-# ui <- pageWithSidebar(headerPanel  = headerPanel(title = "NC Balance of State CoC HMIS Dashboard"), 
-#                       sidebarPanel = sidebarPanel(), 
-#                       mainPanel    = mainPanel())
-
-# alternate ui
 ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"), 
                 sidebarLayout(sidebarPanel(sliderInput(inputId = "someID", 
                                                        label   = "some_label", 
