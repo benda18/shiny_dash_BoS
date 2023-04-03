@@ -32,21 +32,38 @@ nc_counties <- left_join(nc_counties,
                          by = c("NAME" = "County"))
 
 # set limits of basemap to bbox extent of NC
+# manual adjustments to bbox
+x.adj <- 0.3
+y.adj <- 0.9
+
+# get bbox 
 bbox.nc <- nc_counties %>%
   sf::st_geometry()
 bbox.nc <- attributes(bbox.nc)$bbox
 
+# adjust bbox lims
+bbox.nc["xmin"] <- bbox.nc["xmin"] - x.adj * 0.1
+bbox.nc["xmax"] <- bbox.nc["xmax"] + x.adj
+bbox.nc["ymin"] <- bbox.nc["ymin"] - y.adj * 0.1
+bbox.nc["ymax"] <- bbox.nc["ymax"] + y.adj 
+
 # Build Basemap----
 basemap <- ggplot() + 
   theme_void()+
+  theme(panel.border = element_rect(color = "black", fill = NA), 
+        panel.background = element_rect(fill = "#e0fffe"),
+        panel.ontop = F)+
   # theme(axis.text = element_blank(), 
   #       axis.ticks = element_blank())+
   geom_sf(data = adjacent_states, 
-          fill = NA, 
+          fill = "white", 
           color = "grey")+
-  geom_sf(data = nc_bound)
+  geom_sf(data = nc_bound, 
+          color = "grey") +
+  coord_sf(xlim = range(bbox.nc[c("xmin", "xmax")]), 
+           ylim = range(bbox.nc[c("ymin", "ymax")]))
 
-basemap
+basemap 
 
 # # OLDER----
 # # Set Variables----
