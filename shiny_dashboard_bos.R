@@ -72,64 +72,26 @@ gen.layout_ids <- data.frame(NA)
 
 # deploy_ui----
 db.ui <- fluidPage(
-  titlePanel(title="NC Balance of State CoC HMIS Dashboard", 
-             windowTitle="NCCEH NC BoS HIMS Dashboard"),
-  # Sidebar layout with input and output definitions ----
-  sidebarLayout(
-    # Sidebar panel for inputs ----
-    sidebarPanel(
-      # Input: Slider for the number of bins ----
-      sliderInput(inputId = "bins",
-                  label = "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30),
-      sliderInput(inputId = "foo", 
-                  label = "Number of Foos:", 
-                  min = 0, max = 10, value = 4),
-      checkboxGroupInput("checkGroup", 
-                         label = h3("Checkbox group"), 
-                         choices = list("Choice 1" = 1, 
-                                        "Choice 2" = 2, 
-                                        "Choice 3" = 3),
-                         selected = NULL),
-      hr(),
-      fluidRow(column(3, verbatimTextOutput("value")))
-      ), # /sidebarPanel
-    
-    # Main panel for displaying outputs ----
-    mainPanel(
-      # Output: Histogram ----
-      plotOutput(outputId = "distPlot")
-      
-    )
-  ) # /sidebar layout
+  titlePanel(title = "NC Balance of State CoC HMIS Dashboard"),
+  # LAYOUT----
+  # verticalLayout()
+  # flowLayout()
+  # splitLayout()
+  navbarPage(title       = "SELECT PROGRAM:", 
+             id          = "navbar01", 
+             position    = "static-top", 
+             collapsible = T, 
+             fluid       = T, 
+             windowTitle = NA, 
+             tabPanel("System Summary"), 
+             tabPanel("Street Outreach"), 
+             tabPanel("Emergency Shelter & Transitional Housing"), 
+             tabPanel("Permanent Housing Projects"),
+             tabPanel("Homelessness Prevention"))
 )
 
 # deploy_server----
 db.server <- function(input, output) {
-  
-  # Histogram of the Old Faithful Geyser Data ----
-  # with requested number of bins
-  # This expression that generates a histogram is wrapped in a call
-  # to renderPlot to indicate that:
-  #
-  # 1. It is "reactive" and therefore should be automatically
-  #    re-executed when inputs (input$bins) change
-  # 2. Its output type is a plot
-  output$distPlot <- renderPlot({
-    
-    x    <- faithful$waiting
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    
-    hist(x, breaks = bins, col = "#75AADB", border = "white",
-         xlab = "Waiting time to next eruption (in mins)",
-         main = "Histogram of waiting times")
-  })
-  # checkbox output: 
-  # You can access the values of the widget (as a vector)
-  # with input$checkGroup, e.g.
-  output$value <- renderPrint({ input$checkGroup })
   
 }
 
