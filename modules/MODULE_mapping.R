@@ -118,58 +118,9 @@ plot_basemap
 county_names <- tigris::counties(state = var_state, cb = T, year = var_year)$NAME
 gc()
 
-temp.counties <- c("Durham", "Orange", "Chatham", sample(county_names, size = 10, replace = F)) %>%
-  unique()
-rm_geometry   <- T
-
-
-state_water.lines <- NULL
-for(i in county_names[county_names %in% 
-                      temp.counties]){
-  temp.wl <- tigris::area_water(state = var_state, 
-                                county = i) %>%
-    mutate(., 
-           county_name = i)
-  
-  if(rm_geometry){
-    temp.wl <- sf::st_drop_geometry(temp.wl)
-  }
-  
-  state_water.lines <- rbind(state_water.lines, 
-                             temp.wl)
-  rm(temp.wl)
-}
-
-gc()
-
-state_water.lines %>%
-  .[!is.na(.$FULLNAME),] %>%
-  group_by(FULLNAME) %>%
-  summarise(n = n(), 
-            n_co = n_distinct(county_name), 
-            n_hydroid = n_distinct(HYDROID))
-
-slice_max(group_by(state_water.lines[!is.na(state_water.lines$FULLNAME),], county_name), 
-          order_by = AWATER, n = 3)
-
-
-
 ggplot() + 
-  geom_sf(data = tigris::counties(var_state,cb=T,year=var_year)[counties(var_state,cb=T,year=var_year)$NAME %in% 
-                                                                  temp.counties,], 
-          fill = "white", color = "grey")+
-  geom_sf(data = state_water.lines[!is.na(state_water.lines$FULLNAME),],#[grepl("Eno|Jord|Falls|Johns", state_water.lines$FULLNAME, ignore.case = F),], 
-          #fill = "black", color = "black")
-          aes(fill = MTFCC, color = MTFCC))
-
-state_water.lines$MTFCC %>% table(., useNA = "always")
-
-state_water.lines[grepl("Eno|Jord|Falls", 
-                        state_water.lines$FULLNAME, 
-                        ignore.case = F),]$FULLNAME %>% unique()
-
-
-
+  geom_sf(data = tigris::counties(var_state,cb=T,year=var_year), 
+          fill = "white", color = "grey")
 
 # HOW TO ADD CENSUS DATA TO YOUR MAP----
 nc_county_population <- tidycensus::get_estimates(geography = "county", 
@@ -179,7 +130,7 @@ nc_county_population <- tidycensus::get_estimates(geography = "county",
 
 
 # add to our county map
-map.nc + 
+plot_basemap + 
   geom_sf(data = nc_county_population)
 
 # filter out variable to "POP" (removes 'density', which we don't want)
@@ -187,7 +138,7 @@ nc_county_population <- nc_county_population[nc_county_population$variable == "P
 
 
 # fill (color) counties based on population size variable
-pop.nc <- map.nc + 
+pop.nc <- plot_basemap + 
   geom_sf(data = nc_county_population, 
           aes(fill = value))
 
@@ -213,6 +164,6 @@ pop.nc +
   scale_fill_viridis_c(option = "C",            # changes the color pattern to a preset that I like
                        labels = scales::comma,  # adds commas to the legend values
                        name = glue("{demographic.info}"))+ # allows you to custom-name the legend
-  labs(title = glue("{state.filter} {demographic.info} Information by County"), 
-       subtitle = glue("Census Year: {census.year}"), 
+  labs(title = glue("{var_state} {demographic.info} Information by County"), 
+       subtitle = glue("Census Year: {var_year}"), 
        caption = glue("Source: US Census Bureau"))
