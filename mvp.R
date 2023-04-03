@@ -50,11 +50,11 @@ ui <- pageWithSidebar(
                                            min     = 1, 
                                            max     = 9)),
   # main panel----
-  mainPanel    = mainPanel(plotOutput('plot1')))
+  mainPanel    = mainPanel(plotOutput('plot1')))# plotOutput is part of the shiny interactive plot
 
 
 # SERVER----
-server <- function(input, # input data (i.e. iris)
+server <- function(input,  # input data (i.e. iris)
                    output, # output features (i.e. plot)
                    session) {
   
@@ -67,7 +67,8 @@ server <- function(input, # input data (i.e. iris)
     kmeans(selectedData(), input$clusters)
   })
   
-  output$plot1 <- renderPlot({
+  # plot colors
+  output$plot1 <- shiny::renderPlot(expr = {
     palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
               "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
     
@@ -84,5 +85,4 @@ server <- function(input, # input data (i.e. iris)
 }
 
 # APP----
-
 shiny::shinyApp(ui = ui, server = server)
