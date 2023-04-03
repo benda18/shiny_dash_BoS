@@ -5,6 +5,7 @@ library(tigris)
 library(tidycensus)
 library(dplyr)
 library(glue)
+library(readr)
 
 # Vars----
 var_year <- 2021
@@ -12,19 +13,37 @@ var_year <- 2021
 # Get Data----
 nc_bound <- tigris::states(cb = T, year = var_year) %>%
   .[.$NAME == "North Carolina",]
-nc_counties <- tigris::counties(state = "NC", cb = T, year = var_year)
+adjacent_states <- tigris::states(cb = T, year = var_year) %>%
+  .[.$STUSPS %in% c("VA", "WV", "TN", "SC", 
+                    "GA", "KY", "AL", "DE", 
+                    "MD"),]
 
-# remove vars
-rm(var_year)
+nc_counties     <- tigris::counties(state = "NC", cb = T, year = var_year)
+bos_cos_regions <- read_csv("https://raw.githubusercontent.com/timbender-ncceh/PIT_HIC/main/crosswalks/county_district_region_crosswalk.csv") %>%
+  .[,c("Coc/Region", "County")] 
+colnames(bos_cos_regions)[!colnames(bos_cos_regions) %in% "County"] <- "Region"
+bos_cos_regions$Region <- bos_cos_regions$Region %>%
+  gsub("^BoS ", "", .)
+
+
 # Tidy----
+nc_counties <- left_join(nc_counties, 
+                         bos_cos_regions, 
+                         by = c("NAME" = "County"))
+
 
 # Build Basemap----
 basemap <- ggplot() + 
-  theme_minimal()+
-  theme(axis.text = element_blank(), 
-        axis.ticks = element_blank())+
+  theme_void()+
+  # theme(axis.text = element_blank(), 
+  #       axis.ticks = element_blank())+
+  geom_sf(data = adjacent_states, 
+          fill = NA, 
+          color = "grey")+
   geom_sf(data = nc_bound)
-  
+
+basemap
+
 # # OLDER----
 # # Set Variables----
 # var_state        <- "North Carolina"  
