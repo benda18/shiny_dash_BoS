@@ -8,6 +8,9 @@ library(glue)
 
 rm(list = ls());gc();cat('\f')  
 
+
+
+# OLDER----
 # Set Variables----
 var_state        <- "North Carolina"  
 demographic.info <- "population"      # you can also change this to 'housing'
