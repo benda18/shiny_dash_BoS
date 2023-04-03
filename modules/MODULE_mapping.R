@@ -41,6 +41,8 @@ bos_regions$Region_f <- factor(bos_regions$Region,
 
 bos_counties <- nc_counties[!is.na(nc_counties$Region),] %>%
   .[!.$Region %in% c("Durham CoC", "Orange CoC"),]
+bos_counties$NAME_f <- factor(bos_counties$NAME, 
+                              levels = unique(bos_counties$NAME)[order(unique(bos_counties$NAME))])
 
 # set limits of basemap to bbox extent of NC
 # manual adjustments to bbox
@@ -64,24 +66,22 @@ basemap <- ggplot() +
   theme(panel.border = element_rect(color = "black", fill = NA), 
         panel.background = element_rect(fill = "#e0fffe"),
         panel.ontop = F)+
-  # theme(axis.text = element_blank(), 
-  #       axis.ticks = element_blank())+
   geom_sf(data = adjacent_states, 
           fill = "white", 
           color = "grey")+
   geom_sf(data = nc_bound,
           color = "grey",
-          fill = "white") +
-  geom_sf(data = bos_regions, 
-          color = "white",
-          aes(fill = Region_f))+
-  geom_sf(data = nc_bound, 
-          color = "grey", 
-          fill = NA) +
-  geom_sf(data = bos_counties, 
-          fill = NA, color = "black") +
-  coord_sf(xlim = range(bbox.nc[c("xmin", "xmax")]), 
-           ylim = range(bbox.nc[c("ymin", "ymax")]))+
-  scale_fill_discrete(name = "BoS Region")
+          fill = "white") #+
+  # geom_sf(data = bos_regions, 
+  #         color = "white",
+  #         aes(fill = Region_f))+
+  # geom_sf(data = nc_bound, 
+  #         color = "grey", 
+  #         fill = NA) +
+  # geom_sf(data = bos_counties, 
+  #         fill = NA, color = "black") +
+  # coord_sf(xlim = range(bbox.nc[c("xmin", "xmax")]), 
+  #          ylim = range(bbox.nc[c("ymin", "ymax")]))+
+  # scale_fill_discrete(name = "BoS Region")
 
 # basemap
