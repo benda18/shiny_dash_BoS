@@ -105,7 +105,7 @@ devtools::source_url(url = "https://raw.githubusercontent.com/timbender-ncceh/sh
 #   as.data.frame() %>%
 #   as_tibble()
 
-pretend.df <- read_csv("https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/proof_of_concept_app/summary_agegroups_by_region.csv")
+
 
 # SHINY APP---
 # # Goals----
@@ -127,6 +127,10 @@ pretend.df <- read_csv("https://raw.githubusercontent.com/timbender-ncceh/shiny_
 
 # myMVP---
 # ui----
+
+
+
+
 ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
                 div(h4("Proof of Concept Shiny Dashboard Demonstrating the following:"),
                     ("* Ability to add [dummy] data table(s) to dashboard"),
@@ -166,6 +170,10 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
 
 # server----
 server <- function(input,  output, session) {
+  # load data
+  pretend.df <- read_csv("https://raw.githubusercontent.com/timbender-ncceh/shiny_dash_BoS/main/proof_of_concept_app/summary_agegroups_by_region.csv")
+  
+  # other stuff
   output$basemap01 <- renderPlot({
     basemap+
       geom_sf(data = bos_regions[bos_regions$Region %in% input$checkGroup01,], # filter regions here 
