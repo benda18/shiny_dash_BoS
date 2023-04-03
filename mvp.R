@@ -120,7 +120,7 @@ sa.goals <- list(done_1 = c("hello world example"),
                  step_8 = c("replace test.data with real_data"),
                  step_9 = c("make entire dash functional"),
                  step_N = c("formatting", "aesthetics"), 
-                 step_N+1 = c("full deployment"))
+                 `step_N+1` = c("full deployment"))
 sa.goals
 
 # myMVP---
@@ -147,13 +147,7 @@ ui <- fluidPage(titlePanel("NC Balance of State CoC HMIS Dashboard"),
                                      selected = c(1:13)),
                   #hr(),  # this is an html tag <hr> for creating a thematic break in a page
                   # fluidRow(column(3, verbatimTextOutput("value01"))), # prints the results of the checkboxes
-                  
-                  # Select [something] by sliderInput
-                  sliderInput(inputId = "someID", 
-                              label   = "some_label", 
-                              min     = 0, 
-                              max     = 2, 
-                              value   = 1 )), 
+                  ), 
                   mainPanel(plotOutput(outputId = "basemap01"), 
                             tableOutput(outputId = "table01"))))
 
