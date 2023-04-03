@@ -49,7 +49,24 @@ sa.goals <- list(step_1 = c("ggplot basemap",
                             "formatting "))
 sa.goals
 
+# myMVP---
+# ui----
+ui <- pageWithSidebar(headerPanel  = headerPanel(title = "NC Balance of State CoC HMIS Dashboard"), 
+                      sidebarPanel = sidebarPanel(), 
+                      mainPanel    = mainPanel())
 
+# server----
+server <- function(input,  output, session) {
+  
+}
+
+# app----
+shinyApp(ui = ui, server = server)
+
+
+
+# OLDER----
+stop("older code; do not run")
 # Components----
 # ui-----
 ui <- pageWithSidebar(
@@ -79,26 +96,26 @@ ui <- pageWithSidebar(
 server <- function(input,  # input data (i.e. iris)
                    output, # output features (i.e. plot)
                    session) {
-  
+
   # Building the Dataset----
-  
+
   # filter down base data (IRIS) based on inputs (xcol, ycol)
   selectedData <- reactive({
     iris[, c(input$xcol, input$ycol)]
   })
-  
+
   # perform kmeans() function on selectedData to return clusters
   clusters <- reactive({
-    kmeans(x       = selectedData(), 
+    kmeans(x       = selectedData(),
            centers = input$clusters)
   })
-  
+
   # build plot----
   output$plot1 <- shiny::renderPlot(expr = {  # note how 'plot1' is same as outputId in UI
     # set color palette for clusters, up to maximum number of clusters (9)
     palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
               "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
-    
+
     # par sets or queries graphical parameters
     par(mar = c(5.1, 4.1, 0, 1)) # mar sets margins for plot
     # plot... plots
@@ -108,7 +125,7 @@ server <- function(input,  # input data (i.e. iris)
     # points addes points
     points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
   })
-  
+
 }
 
 # app----
