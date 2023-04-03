@@ -31,6 +31,10 @@ nc_counties <- left_join(nc_counties,
                          bos_cos_regions, 
                          by = c("NAME" = "County"))
 
+# set limits of basemap to bbox extent of NC
+bbox.nc <- nc_counties %>%
+  sf::st_geometry()
+bbox.nc <- attributes(bbox.nc)$bbox
 
 # Build Basemap----
 basemap <- ggplot() + 
