@@ -7,6 +7,7 @@ NC Balance of State CoC HMIS Dashboard
 * RStudio Shiny homepage: https://shiny.rstudio.com/
 
 ## EXAMPLE SHINY DASHBOARDS ##
+* Swim Team Selector: https://github.com/gpilgrim2670/SwimMap
 * COVID-19 Tracker: https://shiny.rstudio.com/gallery/covid19-tracker.html
 * ZIPCODE Demographics: https://shiny.rstudio.com/gallery/superzip-example.html
 
