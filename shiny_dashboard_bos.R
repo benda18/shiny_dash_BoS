@@ -82,13 +82,54 @@ db.ui <- fluidPage(
              position    = "static-top", 
              collapsible = T, 
              fluid       = T, 
-             windowTitle = NA, 
-             tabPanel("System Summary"), 
-             tabPanel("Street Outreach"), 
-             tabPanel("Emergency Shelter & Transitional Housing"), 
-             tabPanel("Permanent Housing Projects"),
-             tabPanel("Homelessness Prevention"))
-)
+             windowTitle = NA,
+             tabPanel("System Summary", 
+                      icon = icon("globe"),
+                      fillPage(tags$style(type = "text/css",
+                                          ".half-fill { width: 50%; height: 100%; }",
+                                          "#ss1 { float: left; background-color: #ddddff; }",
+                                          "#ss2 { float: right; background-color: #ccffcc; }"),
+                               div(id = "ss1", class = "half-fill", "Map: County by Region"),
+                               div(id = "ss2", class = "half-fill", "Global Dashboard Filters"),
+                               padding = 0)), 
+             tabPanel("Street Outreach", 
+                      icon = icon("handshake-angle"),
+                      fillPage(tags$style(type = "text/css",
+                                          ".half-fill { width: 50%; height: 100%; }",
+                                          "#so1 { float: left; background-color: #ddddff; }",
+                                          "#so2 { float: right; background-color: #ccffcc; }"),
+                               div(id = "so1", class = "half-fill", "Map: County by Region"),
+                               div(id = "so2", class = "half-fill", "Global Dashboard Filters"),
+                               padding = 0)), 
+             tabPanel("Emergency Shelter & Transitional Housing", 
+                      icon = icon("people-roof"),
+                      fillPage(tags$style(type = "text/css",
+                                          ".half-fill { width: 50%; height: 100%; }",
+                                          "#esth1 { float: left; background-color: #ddddff; }",
+                                          "#esth2 { float: right; background-color: #ccffcc; }"),
+                               div(id = "esth1", class = "half-fill", "Map: County by Region"),
+                               div(id = "esth2", class = "half-fill", "Global Dashboard Filters"),
+                               padding = 0)), 
+             tabPanel("Permanent Housing Projects", 
+                      icon = icon("house-user"), 
+                      fillPage(tags$style(type = "text/css",
+                                          ".half-fill { width: 50%; height: 100%; }",
+                                          "#php1 { float: left; background-color: #ddddff; }",
+                                          "#php2 { float: right; background-color: #ccffcc; }"),
+                               div(id = "php1", class = "half-fill", "Map: County by Region"),
+                               div(id = "php2", class = "half-fill", "Global Dashboard Filters"),
+                               padding = 0)
+                      ),
+             tabPanel("Homelessness Prevention", 
+                      icon = icon("p"), 
+                      fillPage(tags$style(type = "text/css",
+                                          ".half-fill { width: 50%; height: 100%; }",
+                                          "#hp1 { float: left; background-color: #ddddff; }",
+                                          "#hp2 { float: right; background-color: #ff0000; }"),
+                               div(id = "hp1", class = "half-fill", "Map: County by Region"),
+                               div(id = "hp2", class = "half-fill", "Global Dashboard Filters"),
+                               padding = 0)
+             )))
 
 # deploy_server----
 db.server <- function(input, output) {
@@ -97,3 +138,4 @@ db.server <- function(input, output) {
 
 # deploy_shiny.app----
 shinyApp(ui = db.ui, server = db.server)
+
