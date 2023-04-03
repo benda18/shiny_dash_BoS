@@ -109,16 +109,21 @@ pretend.df <- pretend.df %>%
 
 # SHINY APP---
 # Goals----
-sa.goals <- list(step_1 = c("hello world example"), 
-                 step_2 = c("ggplot basemap", 
+sa.goals <- list(done_1 = c("hello world example"), 
+                 done_2 = c("ggplot basemap", 
                             "show a table", 
                             "not interactive", 
                             "not filterable"), 
-                 step_3 = c("table filters"), 
-                 step_4 = c("map-county selection"), 
-                 step_5 = c("sliders and other inputs things"),
-                 step_N = c("formatting map theme", 
-                            "formatting "))
+                 step_3 = c("example slider - region; not working"), 
+                 step_4 = c("deploy to web server"),
+                 step_5 = c("link slider region to table", 
+                            "link slider region to map"), 
+                 step_6 = c("slider-region functions"),
+                 step_7 = c("nav bar"),
+                 step_8 = c("replace test.data with real_data"),
+                 step_9 = c("make entire dash functional"),
+                 step_N = c("formatting", "aesthetics"), 
+                 step_N+1 = c("full deployment"))
 sa.goals
 
 # myMVP---
