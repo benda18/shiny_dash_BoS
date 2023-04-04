@@ -14,12 +14,12 @@ f
 * NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
 ### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
-### Example Dashboards ###
+#### Example Dashboards ####
 * Swim Team Finder (shiny dash): https://shiny.rstudio.com/gallery/ncaa-swim-team-finder.html
 * Swim Team Finder (github): https://github.com/gpilgrim2670/SwimMap
 * COVID-19 Tracker: https://shiny.rstudio.com/gallery/covid19-tracker.html
 * ZIPCODE Demographics: https://shiny.rstudio.com/gallery/superzip-example.html
-### Tools, Features, Tutorials, Etc ###
+#### Tools, Features, Tutorials, Etc ####
 ##### Using Tabs / Navbar #####
 * Using Tabs: https://shiny.rstudio.com/gallery/tabsets.html
 * Using NavBars: https://shiny.rstudio.com/gallery/navbar-example.html
