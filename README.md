@@ -1,7 +1,10 @@
 # README: shiny_dash_BoS #
 NC Balance of State CoC HMIS Dashboard
-## BACKGROUND ##
 [to-do: include background narrative here]
+## PROGRESS THUS FAR / PLAN-OF-ATTACK ##
+### Progress ###
+### Plan of Attack ###
+
 ## APPENDIX ##
 ### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
