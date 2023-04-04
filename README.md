@@ -4,9 +4,9 @@ My understanding of the overall project is that the dashboard was created by ICA
 
 My job is to resolve these issues and get it back up and working by the end of April for the use of our project members for an upcoming project.  Specific tasks for accomplishing this are included in smartsheets here: https://app.smartsheet.com/sheets/cx4Phq344XpWWQXPRvxXC6HcpqFG8qXMR5RGJ981?view=grid&filterId=6521353234868100
 
-## PLAN OF ATTACK ## 
-* Provide status updates to Andrea along the way
+## PLAN OF ATTACK (inc. Status Updates) ## 
 * Eyes on Tableau 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This will appear 
 * Demonstrate Understanding of Problem 
 * Create Timeline to Completion; calendar blocking
 * Run Dashboard Update as-is and witness problems
@@ -15,10 +15,6 @@ My job is to resolve these issues and get it back up and working by the end of A
 * Provide link and status to Andrea when complete
 ## RISKS/OBSTACLES ##
 ## TIMELINE ##
-## PROGRESS STATUS ##
-* Have demonstrated projected undrestanding (top of this page, click [here:](https://github.com/timbender-ncceh/shiny_dash_BoS/blob/main/README.md#project-understanding))
-
-
 ## APPENDIX ##
 ### TABLEAU Resources ###
 * NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
