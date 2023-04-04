@@ -1,5 +1,5 @@
 # NC Balance of State CoC HMIS Dashboard - README #
-### PROJECT UNDERSTANDING ###
+### Project Understanding ###
 My understanding of the overall project is that the dashboard was created by ICA some time ago and is live.  However, it requires regular maintenance in the form of data pulls from HMIS monthly, processing through a tableau flow and pushes to tableau server, which have not been completed in some time.  Additionally, there are some tecnical bugs in the dashboard that prevent it from functioning properly, which is the reason it hasn't been maintained.  
 
 My job is to resolve these issues and get it back up and working by the end of April for the use of our project members for an upcoming project.  Specific tasks for accomplishing this are included in smartsheets here: https://app.smartsheet.com/sheets/cx4Phq344XpWWQXPRvxXC6HcpqFG8qXMR5RGJ981?view=grid&filterId=6521353234868100
