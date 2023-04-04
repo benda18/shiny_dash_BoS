@@ -7,13 +7,14 @@ My job is to resolve these issues and get it back up and working by the end of A
 ## PLAN OF ATTACK ## 
 * Provide status updates to Andrea along the way
 * Eyes on Tableau 
-* Demonstrate Understanding of Problem
+* Demonstrate Understanding of Problem 
 * Create Timeline to Completion; calendar blocking
 * Run Dashboard Update as-is and witness problems
 * Attack smartsheet tasks 1-at-a-time; proceed when previous task is complete and no longer issue in dash (unless issue is dependent on another downstream task)
 * QA complete and working dash 
 * Provide link and status to Andrea when complete
 ## PROGRESS STATUS ##
+* Have demonstrated projected undrestanding (top of this page, click [here:](https://github.com/timbender-ncceh/shiny_dash_BoS/blob/main/README.md#project-understanding))
 
 
 ## APPENDIX ##
