@@ -5,9 +5,11 @@ My understanding of the overall project is that the dashboard was created by ICA
 My job is to resolve these issues and get it back up and working by the end of April for the use of our project members for an upcoming project.  Specific tasks for accomplishing this are included in smartsheets here: https://app.smartsheet.com/sheets/cx4Phq344XpWWQXPRvxXC6HcpqFG8qXMR5RGJ981?view=grid&filterId=6521353234868100
 
 ## PLAN OF ATTACK ## 
-
+* Eyes on Tableau 
+* Demonstrate Understanding of Problem
+* [] ???
 ## PROGRESS STATUS ##
-f 
+
 
 ## APPENDIX ##
 ### TABLEAU Resources ###
