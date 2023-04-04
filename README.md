@@ -14,7 +14,7 @@ My job is to resolve these issues and get it back up and working by the end of A
 * QA complete and working dash 
 * Provide link and status to Andrea when complete
 ## RISKS/OBSTACLES ##
- 
+## TIMELINE ##
 ## PROGRESS STATUS ##
 * Have demonstrated projected undrestanding (top of this page, click [here:](https://github.com/timbender-ncceh/shiny_dash_BoS/blob/main/README.md#project-understanding))
 
