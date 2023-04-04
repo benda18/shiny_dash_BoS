@@ -3,8 +3,8 @@ NC Balance of State CoC HMIS Dashboard
 [to-do: include background narrative here]
 ## PROGRESS THUS FAR / PLAN-OF-ATTACK ##
 ### Progress ###
-### Plan of Attack ###
-
+### Plan of Attack ### 
+f
 ## APPENDIX ##
 ### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
