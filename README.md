@@ -7,7 +7,7 @@ My job is to resolve these issues and get it back up and working by the end of A
 ## PLAN OF ATTACK ## 
 
 ## PROGRESS STATUS ##
-f
+f 
 
 ## APPENDIX ##
 ### TABLEAU Resources ###
