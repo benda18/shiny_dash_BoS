@@ -5,8 +5,12 @@ My understanding of the overall project is that the dashboard was created by ICA
 My job is to resolve these issues and get it back up and working by the end of April for the use of our project members for an upcoming project.  Specific tasks for accomplishing this are included in smartsheets here: https://app.smartsheet.com/sheets/cx4Phq344XpWWQXPRvxXC6HcpqFG8qXMR5RGJ981?view=grid&filterId=6521353234868100
 
 ## PLAN OF ATTACK (inc. Status Updates) ## 
-* Eyes on Tableau <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This will appear 
+* Eyes on Tableau 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Beginning Saturday Night and throughtout all day Sunday I dove into this. 
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I reviewed the smartsheet tasks
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I reviewed the ICA guidebook
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I reviewed the tableau data flow for processing the data
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I reviewed the tableau desktop file for building the dashboard
 * Demonstrate Understanding of Problem 
 * Create Timeline to Completion; calendar blocking
 * Run Dashboard Update as-is and witness problems
