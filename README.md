@@ -10,9 +10,10 @@ My job is to resolve these issues and get it back up and working by the end of A
 
 
 ## APPENDIX ##
+## TABLEAU Resources ##
+* NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
 ### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
-* NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
 ### Example Dashboards ###
 * Swim Team Finder (shiny dash): https://shiny.rstudio.com/gallery/ncaa-swim-team-finder.html
 * Swim Team Finder (github): https://github.com/gpilgrim2670/SwimMap
@@ -51,4 +52,3 @@ My job is to resolve these issues and get it back up and working by the end of A
 * Plot Zooming: https://shiny.rstudio.com/gallery/plot-interaction-zoom.html
 * Exclusions: https://shiny.rstudio.com/gallery/plot-interaction-exclude.html
 * Basic Image interaction: https://shiny.rstudio.com/gallery/image-interaction-basic.html
-## TABLEAU Resources ##
