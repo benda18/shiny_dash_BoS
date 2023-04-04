@@ -1,10 +1,12 @@
 # README: shiny_dash_BoS #
-NC Balance of State CoC HMIS Dashboard
-[to-do: include background narrative here]
+##### NC Balance of State CoC HMIS Dashboard #####
+My understanding of the overall project is that the dashboard was created by ICA some time ago and is live.  However, it requires regular maintenance in the form of data pulls from HMIS monthly, processing through a tableau flow and pushes to tableau server, which have not been completed in some time.  Additionally, there are some tecnical bugs in the dashboard that prevent it from functioning properly, which is the reason it hasn't been maintained.  
+
+My job is to resolve these issues and get it back up and working by the end of April for the use of our project members for an upcoming project.  
 ## PROGRESS THUS FAR / PLAN-OF-ATTACK ##
 ### Progress ###
 ### Plan of Attack ### 
-f
+
 ## APPENDIX ##
 ### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
