@@ -2,8 +2,8 @@
 NC Balance of State CoC HMIS Dashboard
 ## BACKGROUND ##
 [to-do: include background narrative here]
-## SHINY ##
-### Resources ###
+## APPENDIX ##
+### SHINY Resources ###
 * The Bible: https://mastering-shiny.org/index.html
 * NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
 ### Example Dashboards ###
@@ -44,4 +44,4 @@ NC Balance of State CoC HMIS Dashboard
 * Plot Zooming: https://shiny.rstudio.com/gallery/plot-interaction-zoom.html
 * Exclusions: https://shiny.rstudio.com/gallery/plot-interaction-exclude.html
 * Basic Image interaction: https://shiny.rstudio.com/gallery/image-interaction-basic.html
-## TABLEAU ##
+## TABLEAU Resources ##
