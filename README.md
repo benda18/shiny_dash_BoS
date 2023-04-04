@@ -13,7 +13,15 @@ My job is to resolve these issues and get it back up and working by the end of A
 * QA complete and working dash 
 * Provide link and status to Andrea when complete
 ## RISKS/OBSTACLES ##
+* TIMELINE RISKS
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Missed deadlines are our biggest risk.  Time is short and meeting the deadline is crucial. 
+* KNOWLEDGE OF SOFTWARE RISKS
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not knowing how tableau works, combined with short timeline, will lead to a missed deadline
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a backup plan, I spent most of the weekend learning shiny.  I have built a Minimum Viable Product (MVP) proof-of-concept dashboard that demonstrates the minimum data, ui, interactive, and deployment criteria necessary to re-create our dashboard in shiny if necesary.   
+* DATA RISKS
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There could be bugs in ica's work, changes in data ouptput standards, or other incompatibilites in the project that compound the challenges and slow progress, leading to missed deadlines.  
 ## TIMELINE ##
+[TBD]
 ## APPENDIX ##
 ### TABLEAU Resources ###
 * NCCEH existing Tableau Dashboard: https://public.tableau.com/app/profile/nccehdatacenter/viz/NCBalanceofStateCoCHMISDashboard/BoS
