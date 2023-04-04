@@ -1,4 +1,4 @@
-# NC Balance of State CoC HMIS Dashboard - README #
+# NC Balance of State CoC HMIS Dashboard - PROJECT DOCUMENTATION #
 ### Project Understanding ###
 My understanding of the overall project is that the dashboard was created by ICA some time ago and is live.  However, it requires regular maintenance in the form of data pulls from HMIS monthly, processing through a tableau flow and pushes to tableau server, which have not been completed in some time.  Additionally, there are some tecnical bugs in the dashboard that prevent it from functioning properly, which is the reason it hasn't been maintained.  
 
