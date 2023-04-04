@@ -16,7 +16,7 @@ My job is to resolve these issues and get it back up and working by the end of A
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Missed deadlines are our biggest risk.  Time is short and meeting the deadline is crucial. 
 * KNOWLEDGE OF SOFTWARE RISKS
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not knowing how tableau works, combined with short timeline, will lead to a missed deadline
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a backup plan, I spent most of the weekend learning shiny.  I have built a Minimum Viable Product (MVP) proof-of-concept dashboard that demonstrates the minimum data, ui, interactive, and deployment criteria necessary to re-create our dashboard in shiny if necesary.   
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As a backup plan, I spent most of the weekend learning shiny.  I have built a Minimum Viable Product (MVP) proof-of-concept dashboard that demonstrates the minimum data, ui, interactive, and deployment criteria necessary to re-create our dashboard in shiny if necesary ([link:](https://timbender-ncceh.shinyapps.io/proof_of_concept_app/?_ga=2.250851525.27973912.1680540594-1081900499.1680540594) )
 * DATA RISKS
 <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There could be bugs in ica's work, changes in data ouptput standards, or other incompatibilites in the project that compound the challenges and slow progress, leading to missed deadlines.  
 ## TIMELINE ##
