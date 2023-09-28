@@ -52,7 +52,7 @@ My job is to resolve these issues and get it back up and working by the end of A
 ##### Sliders #####
 * Slider single value: https://gallery.shinyapps.io/077-widget-slider/
 * Slider range: https://gallery.shinyapps.io/077-widget-slider/
-* Gallery of slider examples: https://shiny.rstudio.com/gallery/sliders.html  
+* Gallery of slider examples: https://shiny.rstudio.com/gallery/sliders.html
 ##### Tables #####
 * Basic table examples: https://shiny.rstudio.com/gallery/basic-datatable.html
 * Table Demos: https://shiny.rstudio.com/gallery/datatables-demo.html
@@ -64,3 +64,6 @@ My job is to resolve these issues and get it back up and working by the end of A
 * Plot Zooming: https://shiny.rstudio.com/gallery/plot-interaction-zoom.html
 * Exclusions: https://shiny.rstudio.com/gallery/plot-interaction-exclude.html
 * Basic Image interaction: https://shiny.rstudio.com/gallery/image-interaction-basic.html
+* ##### Deployment #####
+* Deploy locally without a server via a standalone desktop app: https://github.com/georgemirandajr/Desktop-Shiny-Apps-for-LAC
+
