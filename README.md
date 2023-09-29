@@ -64,6 +64,6 @@ My job is to resolve these issues and get it back up and working by the end of A
 * Plot Zooming: https://shiny.rstudio.com/gallery/plot-interaction-zoom.html
 * Exclusions: https://shiny.rstudio.com/gallery/plot-interaction-exclude.html
 * Basic Image interaction: https://shiny.rstudio.com/gallery/image-interaction-basic.html
-* ##### Deployment #####
+##### Deployment #####
 * Deploy locally without a server via a standalone desktop app: https://github.com/georgemirandajr/Desktop-Shiny-Apps-for-LAC
 
